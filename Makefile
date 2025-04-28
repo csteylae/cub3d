@@ -26,6 +26,7 @@ clean :
 	rm -rf $(OBJS)
 
 fclean : clean
+	make fclean -C ./lib/libft
 	rm -rf $(NAME)
 
 re: fclean all
