@@ -1,27 +1,28 @@
-NAME= cub3d
+NAME= cub3D
 CC= cc
 CFLAGS= -Wall -Wextra -Werror
 
 LIBFT= ./lib/libft/libft.a
 LIBMLX= ./minilibx-linux/libmlx.a
-LIBMLX_FLAGS= -L./minilibx_linux -lmlx_Linux -L/usr/lib -I./minilibx_linux -lXext -lX11 -lm -lz
 
-#SRCS=
+SRCS= ./src/main.c
 
-#OBJS=$(SRCS:.c=.o)
+OBJS=$(SRCS:.c=.o)
 
-$(NAME): $(OBJS) minilibx
-	make -C ./minilibx-linux
-	make -C ./lib/libft
-	$(CC) $(CFLAGS) $M$(OBJS) $(LIBFT) $(LIBMLX)
+all: $(NAME)
 
-minilibx : 
+$(NAME): $(LIBFT) $(LIBMLX) $(OBJS) 
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -Lminilibx-linux -lmlx_Linux -lX11 -lXext
+
+$(LIBMLX):
 	tar -xf minilibx-linux.tgz
+	make -C minilibx-linux
 
-all : $(NAME)
+$(LIBFT):
+	make -C ./lib/libft
 
 clean :
-	rm -rf minilibx-linux
+	rm -rf ./minilibx-linux
 	make clean -C ./lib/libft
 	rm -rf $(OBJS)
 
