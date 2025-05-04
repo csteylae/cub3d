@@ -5,7 +5,8 @@ CFLAGS= -Wall -Wextra -Werror
 LIBFT= ./lib/libft/libft.a
 LIBMLX= ./minilibx-linux/libmlx.a
 
-SRCS= ./src/main.c
+SRCS= ./src/main.c \
+	  ./src/my_mlx_pixel_put.c
 
 OBJS=$(SRCS:.c=.o)
 

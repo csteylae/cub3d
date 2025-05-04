@@ -15,28 +15,34 @@
 
 #define WIDTH 500
 #define HEIGHT 500
+
 #define RED 0xff0000
+#define BLACK 0x000000
 
+#define IMG_WIDTH 40
+#define IMG_HEIGHT 40
 
-/* 
- * Needed to pass as argument void *param for my pointer to function
- */
-typedef struct s_mlx_data
+t_square	init_square(void)
 {
-	void	*mlx_connection;
-	void	*mlx_window;
-}	t_mlx_data;
+	t_square	square;
 
-void	draw_square(void *mlx_connection, void *mlx_window)
+	square.pos.x = 0;
+	square.pos.y = 0;
+	square.color = RED;
+	return (square);
+}
+
+void	draw_square(t_mlx_data *data, t_square square)
 {
 	int	x = 0;
 	int	y = 0;
 
-	while (y < HEIGHT)
+	while (y < IMG_HEIGHT)
 	{
-		while (x < WIDTH)
+		while (x < IMG_WIDTH)
 		{
-			mlx_pixel_put(mlx_connection, mlx_window, WIDTH + x, HEIGHT + y, rand() % 0x100000);
+			my_mlx_pixel_put(&data->img, square.pos.x + x,
+							square.pos.y + y, square.color);
 			x++;
 		}
 		x = 0;
@@ -44,31 +50,64 @@ void	draw_square(void *mlx_connection, void *mlx_window)
 	}
 }
 
-int	handle_escape(int keysym, t_mlx_data *data)
+void	escape(t_mlx_data *data)
+{
+	mlx_destroy_image(data->mlx_connection, data->img.ptr);
+	mlx_destroy_window(data->mlx_connection, data->mlx_window);
+	mlx_destroy_display(data->mlx_connection);
+	free(data->mlx_connection);
+	exit(EXIT_SUCCESS);
+}
+
+int	handle_keypress(int keysym, t_mlx_data *data)
 {
 	if (keysym == XK_Escape)
-	{
-		printf("The %d key (ESC) has been pressed\n\n", keysym);
-		mlx_destroy_window(data->mlx_connection, data->mlx_window);
-		mlx_destroy_display(data->mlx_connection);
-		free(data->mlx_connection);
-		exit(EXIT_SUCCESS);
-	}
-	printf("The key %d has been pressed\n\n", keysym);
+		escape(data);
+	if (keysym == XK_Right)
+		data->key.right = PRESSED;
+	else if (keysym == XK_Left)
+		data->key.left = PRESSED;
+	else if (keysym == XK_Up)
+		data->key.up = PRESSED;
+	else if (keysym == XK_Down)
+		data->key.down = PRESSED;
 	return (0);
+}
+
+int	handle_keyrelease(int keysym, t_mlx_data *data)
+{
 
 }
+
 
 int main(void)
 {
 	t_mlx_data	data;
 
+	data.square = init_square();
 	data.mlx_connection = mlx_init();
-
 	data.mlx_window = mlx_new_window(data.mlx_connection, 1500,1500, "test");
+	data.img.ptr = mlx_new_image(data.mlx_connection, IMG_WIDTH, IMG_HEIGHT);
+	if (!data.img.ptr)
+	{
+		printf("Error\nCannot get new image\n\n");
+		exit(EXIT_FAILURE);
+	}
+	//should init all images
+	data.img.pixel_addr = mlx_get_data_addr(data.img.ptr,
+		   									&data.img.bits_per_pixel,
+											&data.img.line_length,
+											&data.img.endian);
+	if (!data.img.pixel_addr)
+	{
+		printf("Error\nCannot get_data_addr\n\n");
+		exit(EXIT_FAILURE);
+	}
+	mlx_put_image_to_window(data->mlx_connection, data->mlx_window, 
+							data->img.ptr, data->square.pos.x, 
+							data->square.pos.y);
+	mlx_key_hook(data.mlx_window, handle_keypress, &data);
 
-	draw_square(data.mlx_connection, data.mlx_window);
-	mlx_key_hook(data.mlx_window, handle_escape, &data);
+	mlx_loop_hook(data.mlx_connection, animate_square, &data);
 	mlx_loop(data.mlx_connection);
 }
-	
