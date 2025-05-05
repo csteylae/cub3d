@@ -1,6 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structures.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/05 11:53:00 by csteylae          #+#    #+#             */
+/*   Updated: 2025/05/05 17:47:57 by csteylae         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef 	STRUCTURES_H
 
-#define STRUCTURES_H
+# define STRUCTURES_H
+
+#define PRESSED 0
+#define RELEASED 1
 
 typedef struct s_pos
 {
@@ -20,29 +35,28 @@ typedef struct	s_img
 	void	*ptr;
 	char	*pixel_addr;
 	int		bits_per_pixel;
-	int		line_length;
+	int		line_len;
 	int		endian;
 }	t_img;
 
-typedef struct	key
+typedef struct	s_key
 {
-	int	right;
+	int	w;
+	int	a;
+	int	s;
+	int	d;
 	int	left;
-	int	up;
-	int	down;
-}
+	int	right;
+}	t_key;
 
 typedef struct s_mlx_data
 {
-	void		*mlx_connection;
-	void		*mlx_window;
+	void		*mlx;
+	void		*win;
 	t_square	square;
 	t_img		img;
 	t_key		key;
 
 }	t_mlx_data;
-
-#define PRESSED 1
-#define RELEASED 0
 
 #endif
