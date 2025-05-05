@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:27:57 by csteylae          #+#    #+#             */
-/*   Updated: 2025/05/05 19:06:37 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/05/05 19:20:30 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	draw_square(t_mlx_data *data, t_square square)
 	{
 		while (x < square.size)
 		{
-			if (is_inside_image(data, data->square.pos.x + x, data->square.pos.y + y))
-				my_pixel_put(&data->img, square.pos.x + x, square.pos.y + y, RED);
+		//	if (is_inside_image(data, data->square.pos.x + x, data->square.pos.y + y))
+			my_pixel_put(&data->img, square.pos.x + x, square.pos.y + y, RED);
 			x++;
 		}
 		x = 0;

@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:12:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/05/05 19:02:29 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/05/05 19:21:58 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ t_key	init_key(void)
 {
 	t_key	key;
 
-	key.w = RELEASED;
-	key.a = RELEASED;
-	key.s = RELEASED;
-	key.d = RELEASED;
-	key.left = RELEASED;
-	key.right = RELEASED;
+	key.w = 0;
+	key.a = 0;
+	key.s = 0;
+	key.d = 0;
+	key.left = 0;
+	key.right = 0;
 	return (key);
 }
 
