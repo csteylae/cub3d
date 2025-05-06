@@ -25,7 +25,10 @@
 #define WIDTH 1000
 #define HEIGHT 1000
 
+#define PI 3.1415926535
 #define RED 0xff0000
+
+#define TILE_SIZE 64
 
 /*_______INIT______________*/
 t_mlx_data	init_data(void);
@@ -39,6 +42,10 @@ int		key_release(int keysym, t_mlx_data *data);
 /*_______IMAGE HANDLING______*/
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	ft_clear_image(t_mlx_data *data);
-void	draw_square(t_mlx_data *data, t_square square);
 int		render_frame(t_mlx_data *data);
+bool	is_inside_image(t_mlx_data *data, int x, int y);
+void	draw_map(t_mlx_data *data);
+
+/*_______ERROR_____________*/
+void	put_error(char *error_msg, t_mlx_data *data);
 #endif 

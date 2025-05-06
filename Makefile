@@ -9,6 +9,7 @@ SRCS= ./src/main.c \
 	  ./src/my_mlx_pixel_put.c \
 	  ./src/init_data.c \
 	  ./src/hook.c \
+	  ./src/draw_map.c \
 	  ./src/render_frame.c \
 
 OBJS=$(SRCS:.c=.o)
