@@ -24,8 +24,9 @@
 #include "../lib/libft/libft.h"
 #include "../minilibx-linux/mlx.h"
 
-#define PI 3.1415926535
+#define PI 3.14159265358979323846
 #define RED 0xff0000
+#define ROT_SPEED 0.1
 
 #define TILE_SIZE 64
 

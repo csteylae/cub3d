@@ -1,5 +1,6 @@
 #include "../inc/cub3D.h"
 
+/*
 static void	draw_line(t_mlx_data *data, int from_x, int from_y, int x, int y, int col)
 {
 	double	delta_x;
@@ -11,8 +12,11 @@ static void	draw_line(t_mlx_data *data, int from_x, int from_y, int x, int y, in
 	double	curr_x;
 	double	curr_y;
 
-	delta_x = abs(x - from_x);
-	delta_y = abs(y - from_y);
+	delta_x = x - from_x;
+	delta_y = y - from_y;
+	delta_x = fabs(delta_x);
+	delta_y = fabs(delta_y);
+
 	if (delta_x > delta_y)
 		total_pxl = delta_x;
 	else
@@ -30,6 +34,54 @@ static void	draw_line(t_mlx_data *data, int from_x, int from_y, int x, int y, in
 		i++;
 	}	
 }
+*/
+
+static int	get_slope(int a, int b)
+{
+	if (a < b)
+		return (1);
+	else if (a > b)
+		return (-1);
+	return (0);
+}
+
+static void	draw_line(t_mlx_data *data, int x0, int y0, int x1, int y1)
+{
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+	int	e2;
+
+	dx = abs(x1- x0);
+	dy = -abs(y1 - y0);
+	sx = get_slope(x0, x1);
+	sy = get_slope(y0, y1);
+	err = dx + dy;
+	while (1)
+	{
+		if (is_inside_image(data, x0, y0))
+			my_pixel_put(&data->framebuffer, x0, y0, RED);
+		if (x0 == x1 && y0 == y1)
+			return ;
+		e2 = err * 2;
+		if (e2 >=  dy)
+		{
+			if (x0 == x1)
+				return;
+			err += dy;
+			x0 += sx;
+		}
+		if (e2 <= dx)
+		{
+			if (y0 == y1)
+				return ;
+			err += dx;
+			y0 += sy;
+		}
+	}
+}
 
 void	draw_square(t_mlx_data *data)
 {
@@ -37,6 +89,13 @@ void	draw_square(t_mlx_data *data)
 	int	py;
 	t_minimap_square *square;
 	int	color;
+
+	int	end_x;
+	int	end_y;
+	int	center_x;
+	int	center_y;
+
+	int	line_len = 30;
 
 	px = 0;
 	py = 0;
@@ -53,6 +112,12 @@ void	draw_square(t_mlx_data *data)
 		px = 0;
 		py++;
 	}
-	draw_line(data, square->x + square->size / 2, square->y, 
-			square->x + square->size / 2, square->y - 30, RED);
+	center_x = square->x + square->size / 2;
+	center_y = square->y + square->size / 2;
+
+	end_x = center_x + cos(square->rot_angle) * line_len;
+	end_y = center_y - sin(square->rot_angle) * line_len;
+
+	draw_line(data, center_x, center_y, 
+			end_x, end_y);
 }

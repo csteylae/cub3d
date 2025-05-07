@@ -24,8 +24,8 @@ void	ft_clear_image(t_mlx_data *data)
 
 void	update_position(t_mlx_data *data)
 {
-	int	new_x;
-	int	new_y;
+	int		new_x;
+	int		new_y;
 
 	new_x = data->square.x;
 	new_y = data->square.y;
@@ -37,6 +37,18 @@ void	update_position(t_mlx_data *data)
 		new_y += 5;
 	if (data->key.d)
 		new_x += 5;
+    if (data->key.left == 1)
+	{
+        data->square.rot_angle = fmod(data->square.rot_angle - ROT_SPEED, 2 * PI);
+	}
+	if (data->key.right == 1)
+	{
+		data->square.rot_angle = fmod(data->square.rot_angle + ROT_SPEED, 2 * PI);
+	}
+	if (data->square.rot_angle < 0)
+	{
+		data->square.rot_angle += 2 * PI;
+	}
 	data->square.x = new_x;
 	data->square.y = new_y;
 }

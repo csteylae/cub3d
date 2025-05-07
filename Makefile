@@ -19,7 +19,7 @@ OBJS=$(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(LIBMLX) $(OBJS) 
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) -Lminilibx-linux -lmlx_Linux -lX11 -lXext
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) -lm -Lminilibx-linux -lmlx_Linux -lX11 -lXext
 
 $(LIBMLX):
 	tar -xf minilibx-linux.tgz

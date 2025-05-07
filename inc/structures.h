@@ -30,6 +30,7 @@ typedef struct	s_minimap_square
 	int		y;
 	int		color;
 	int		size;
+	double	rot_angle; //direction
 }	t_minimap_square;
 
 typedef struct	s_img

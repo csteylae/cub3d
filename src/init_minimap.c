@@ -39,6 +39,7 @@ static t_minimap_square	init_square(void)
 	minimap_square.size = 10;
 	minimap_square.x = 64;
 	minimap_square.y = 64;
+	minimap_square.rot_angle = 0;
 	
 	return (minimap_square);
 }
