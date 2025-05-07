@@ -14,16 +14,15 @@
 
 # define CUB3D_H
 
-#include "structures.h"
-#include "../lib/libft/libft.h"
-#include "../minilibx-linux/mlx.h"
+#include <math.h>
 #include <X11/X.h>
 #include <X11/keysym.h>
 #include <stdio.h>
 #include <stdbool.h>
 
-#define WIDTH 1000
-#define HEIGHT 1000
+#include "structures.h"
+#include "../lib/libft/libft.h"
+#include "../minilibx-linux/mlx.h"
 
 #define PI 3.1415926535
 #define RED 0xff0000
@@ -43,9 +42,17 @@ int		key_release(int keysym, t_mlx_data *data);
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	ft_clear_image(t_mlx_data *data);
 int		render_frame(t_mlx_data *data);
-bool	is_inside_image(t_mlx_data *data, int x, int y);
-void	draw_map(t_mlx_data *data);
 
 /*_______ERROR_____________*/
 void	put_error(char *error_msg, t_mlx_data *data);
+
+
+/*_______MINIMAP___________*/
+
+void	init_minimap(t_mlx_data *data);
+void	draw_map(t_mlx_data *data);
+void	draw_square(t_mlx_data	*data);
+bool	is_inside_image(t_mlx_data *data, int x, int y);
+
+
 #endif 

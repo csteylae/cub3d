@@ -14,9 +14,8 @@
 
 int	close_cub3D(t_mlx_data *data)
 {
-	mlx_destroy_image(data->mlx, data->player.img.ptr);
-	mlx_destroy_image(data->mlx, data->wall.ptr);
-	mlx_destroy_image(data->mlx, data->floor.ptr);
+	//mlx_destroy_image(data->mlx, data->wall.ptr);
+	//mlx_destroy_image(data->mlx, data->floor.ptr);
 	mlx_destroy_image(data->mlx, data->framebuffer.ptr);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);

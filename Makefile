@@ -11,6 +11,8 @@ SRCS= ./src/main.c \
 	  ./src/hook.c \
 	  ./src/draw_map.c \
 	  ./src/render_frame.c \
+	  ./src/init_minimap.c \
+	  ./src/draw_minimap.c
 
 OBJS=$(SRCS:.c=.o)
 

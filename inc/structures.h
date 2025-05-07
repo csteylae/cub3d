@@ -19,19 +19,18 @@
 
 typedef struct s_pos
 {
-	int		x;
-	int 	y;
-	float	delta_x;
-	float	delta_y;
-	float	angle;
+	double		x;
+	double	 	y;
+	double		rot_angle;
 }	t_pos;
 
-typedef struct	s_square
+typedef struct	s_minimap_square
 {
-//	t_pos	pos;
+	int		x;
+	int		y;
 	int		color;
 	int		size;
-}	t_square;
+}	t_minimap_square;
 
 typedef struct	s_img
 {
@@ -54,23 +53,23 @@ typedef struct	s_key
 
 typedef struct	s_player
 {
-	t_square	square;
 	t_img		img;
 	t_pos		pos;
 }	t_player;
 
 typedef struct s_mlx_data
 {
-	void		*mlx;
-	void		*win;
-	char		**map;
-	int			map_width;
-	int			map_height;
-	t_player	player;
-	t_img		wall;
-	t_img		floor;
-	t_img		framebuffer;
-	t_key		key;
+	void				*mlx;
+	void				*win;
+	char				**map;
+	int					map_width;
+	int					map_height;
+	t_minimap_square	square;
+	t_player			player;
+	t_img				wall;
+	t_img				floor;
+	t_img				framebuffer;
+	t_key				key;
 
 }	t_mlx_data;
 
