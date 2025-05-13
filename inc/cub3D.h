@@ -55,5 +55,7 @@ void	draw_map(t_mlx_data *data);
 void	draw_square(t_mlx_data	*data);
 bool	is_inside_image(t_mlx_data *data, int x, int y);
 
+t_vector	vec(double x, double y);
+t_vector	get_plane(t_vector dir, double plane_len);
 
 #endif 

@@ -17,20 +17,30 @@
 #define PRESSED 0
 #define RELEASED 1
 
+typedef struct	s_vector
+{
+	double	x;
+	double	y;
+}	t_vector;
+
+/*
 typedef struct s_pos
 {
 	double		x;
 	double	 	y;
 	double		rot_angle;
 }	t_pos;
+*/
 
 typedef struct	s_minimap_square
 {
-	int		x;
-	int		y;
-	int		color;
-	int		size;
-	double	rot_angle; //direction
+	t_vector	pos; // player position
+	t_vector	dir; // (0,1) = S; (0,-1) = N ; (1,0) = E ; (0,-1) = E  
+	t_vector	plane; //should be perpendicular to dir. Its length dependt on fov 
+	double		fov_rad;
+	double		plane_len; // defini l'étendue de ce que voit le joueur. Utilisé pour calculer les rayons
+	int			color;
+	int			size;
 }	t_minimap_square;
 
 typedef struct	s_img
@@ -55,7 +65,6 @@ typedef struct	s_key
 typedef struct	s_player
 {
 	t_img		img;
-	t_pos		pos;
 }	t_player;
 
 typedef struct s_mlx_data
