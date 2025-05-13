@@ -1,91 +1,55 @@
 #include "../inc/cub3D.h"
 
-/*
-static int	get_slope(int a, int b)
+bool	is_inside_image(t_mlx_data *data, int x, int y)
 {
-	if (a < b)
-		return (1);
-	else if (a > b)
-		return (-1);
-	return (0);
+	if (x < 0 || y < 0)
+		return (false);
+	if (x > (data->map_width * TILE_SIZE) || y > (data->map_height * TILE_SIZE))
+		return (false);
+	return (true);
 }
 
-static void	draw_line(t_mlx_data *data, int x0, int y0, int x1, int y1)
+void	draw_tile(t_mlx_data *data, int x, int y, int color)
 {
-	int	dx;
-	int	dy;
-	int	sx;
-	int	sy;
-	int	err;
-	int	e2;
+	int	i;
+	int	j;
 
-	dx = abs(x1- x0);
-	dy = -abs(y1 - y0);
-	sx = get_slope(x0, x1);
-	sy = get_slope(y0, y1);
-	err = dx + dy;
-	while (1)
+	i = 0;
+	j = 0;
+	while (i < TILE_SIZE-1)
 	{
-		if (is_inside_image(data, x0, y0))
-			my_pixel_put(&data->framebuffer, x0, y0, RED);
-		if (x0 == x1 && y0 == y1)
-			return ;
-		e2 = err * 2;
-		if (e2 >=  dy)
+		while (j < TILE_SIZE -1)
 		{
-			if (x0 == x1)
-				return;
-			err += dy;
-			x0 += sx;
+			if (is_inside_image(data, x + j, y + i)) 
+				my_pixel_put(&data->framebuffer, x + j, y + i, color);
+			j++;
 		}
-		if (e2 <= dx)
-		{
-			if (y0 == y1)
-				return ;
-			err += dx;
-			y0 += sy;
-		}
+		j = 0;
+		i++;
 	}
 }
-*/
 
-void	draw_square(t_mlx_data *data)
+void	draw_map(t_mlx_data *data)
 {
-	int	px;
-	int	py;
-	t_minimap_square *square;
+	int	x;
+	int	y;
 	int	color;
 
-	/*
-	int	end_x;
-	int	end_y;
-	int	center_x;
-	int	center_y;
-	int	line_len = 30;
-*/
-	px = 0;
-	py = 0;
-	square = &data->square;
-	color = square->color;
-	while (py < square->size)
+	x = 0;
+	y = 0;
+	color = 0;
+	while (data->map[y])
 	{
-		while (px < square->size)
+		while(data->map[y][x])
 		{
-			if (is_inside_image(data, square->pos.x + px ,square->pos.y + py)) 
-				my_pixel_put(&data->framebuffer, square->pos.x + px, square->pos.y + py, color);
-			px++;
+			if (data->map[y][x] == '0')
+				color = 0x000000;
+			else
+				color = 0xffffff;
+			draw_tile(data, x * TILE_SIZE, y * TILE_SIZE, color);
+			x++;
 		}
-		px = 0;
-		py++;
+		x = 0;
+		y++;
 	}
-	/*
-	center_x = square->x + square->size / 2;
-	center_y = square->y + square->size / 2;
-
-	end_x = center_x + cos(square->rot_angle) * line_len;
-	end_y = center_y - sin(square->rot_angle) * line_len;
-
-	draw_line(data, center_x, center_y, 
-			end_x, end_y);
-			*/
 }

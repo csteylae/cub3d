@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:12:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/05/05 19:21:58 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:57:31 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_mlx_data	init_data(void)
 	t_mlx_data	data;
 
 	init_minimap(&data);
+	data.player = init_player(&data);
 	data.key = init_key();
 	data.mlx = mlx_init();
 	if (!data.mlx)
@@ -58,7 +59,6 @@ t_mlx_data	init_data(void)
 							data.map_height * TILE_SIZE, "test");
 	if (!data.win)
 		put_error("mlx_new_window", &data);
-	//init_player(&data);
 	init_framebuffer(&data);
 	return (data);	
 }

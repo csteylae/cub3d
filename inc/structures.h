@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:53:00 by csteylae          #+#    #+#             */
-/*   Updated: 2025/05/05 17:47:57 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:57:26 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,6 @@ typedef struct	s_vector
 	double	x;
 	double	y;
 }	t_vector;
-
-/*
-typedef struct s_pos
-{
-	double		x;
-	double	 	y;
-	double		rot_angle;
-}	t_pos;
-*/
-
-typedef struct	s_minimap_square
-{
-	t_vector	pos; // player position
-	t_vector	dir; // (0,1) = S; (0,-1) = N ; (1,0) = E ; (0,-1) = E  
-	t_vector	plane; //should be perpendicular to dir. Its length dependt on fov 
-	double		fov_rad;
-	double		plane_len; // defini l'étendue de ce que voit le joueur. Utilisé pour calculer les rayons
-	int			color;
-	int			size;
-}	t_minimap_square;
 
 typedef struct	s_img
 {
@@ -64,7 +44,13 @@ typedef struct	s_key
 
 typedef struct	s_player
 {
-	t_img		img;
+	t_vector	pos;
+	t_vector	dir;
+	t_vector	plane;
+	double		fov;
+	double		plane_len;
+	double		move_speed;
+	double		rot_speed;
 }	t_player;
 
 typedef struct s_mlx_data
@@ -74,9 +60,8 @@ typedef struct s_mlx_data
 	char				**map;
 	int					map_width;
 	int					map_height;
-	t_minimap_square	square;
 	t_player			player;
-	t_img				wall;
+	t_img				wall; //maybe need 4 type of wall + ceiling ? myabe make a texture struct ?
 	t_img				floor;
 	t_img				framebuffer;
 	t_key				key;

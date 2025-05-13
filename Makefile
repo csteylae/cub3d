@@ -8,11 +8,13 @@ LIBMLX= ./minilibx-linux/libmlx.a
 SRCS= ./src/main.c \
 	  ./src/my_mlx_pixel_put.c \
 	  ./src/init_data.c \
+	  ./src/init_player.c \
 	  ./src/hook.c \
-	  ./src/draw_map.c \
 	  ./src/render_frame.c \
 	  ./src/init_minimap.c \
-	  ./src/draw_minimap.c
+	  ./src/draw_minimap.c \
+	  ./src/draw_player.c \
+	  ./src/update_position.c \
 
 OBJS=$(SRCS:.c=.o)
 
