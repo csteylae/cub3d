@@ -59,6 +59,15 @@ static t_vector	get_dir(t_mlx_data *data, t_vector pos)
 	exit(EXIT_FAILURE);
 }
 
+t_vector	get_perpendicular_plane(t_vector dir, double plane_len)
+{
+	t_vector	plane;
+
+	plane.x = -dir.y * plane_len;
+	plane.y = dir.x * plane_len;
+	return (plane);
+}
+
 t_player	init_player(t_mlx_data *data)
 {
 	t_player	player;
@@ -67,8 +76,8 @@ t_player	init_player(t_mlx_data *data)
 	player.dir = get_dir(data, player.pos);
 	player.fov = (66 * M_PI) / 180; 
 	player.plane_len = tan(player.fov / 2);
-	player.plane = vec(-player.dir.y * player.plane_len, player.dir.x * player.plane_len);
-	player.move_speed = 0.05;
-	player.rot_speed = 0.03;
+	player.plane = get_perpendicular_plane(player.dir, player.plane_len);;
+	player.move_speed = 0.02;
+	player.rot_speed = 0.02;
 	return (player);
 }

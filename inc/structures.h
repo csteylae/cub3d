@@ -14,14 +14,29 @@
 
 # define STRUCTURES_H
 
-#define PRESSED 0
-#define RELEASED 1
-
 typedef struct	s_vector
 {
 	double	x;
 	double	y;
 }	t_vector;
+
+typedef	struct	s_int_vec
+{
+	int	x;
+	int	y;
+}	t_int_vec;
+
+typedef struct	s_ray
+{
+	t_vector	dir;
+	t_int_vec	map;
+	t_vector	side_dist; // how far the ray need to travel right now to reach the next grid boundary ? Will be updated each time we move from one grid cell to another
+	t_vector	delta_dist; //dist the ray travel to move from one grid line to the next parallel grid line in each direction, how for it must travel to cross one complete grid cell in each direction with this ray angle
+	t_int_vec	step;
+	double		perp_wall_dist; //to calculate how the perpendicular distance from the player to the wall that the ray hits
+	bool		hit; //was there a wall ?
+	int			side; //is it a NS or EW wall hit? Help to draw shadow
+}	t_ray;
 
 typedef struct	s_img
 {
