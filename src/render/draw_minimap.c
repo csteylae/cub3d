@@ -42,7 +42,7 @@ void	draw_map(t_mlx_data *data)
 	{
 		while(data->map[y][x])
 		{
-			if (data->map[y][x] == '0')
+			if (data->map[y][x] == '1')
 				color = 0x000000;
 			else
 				color = 0xffffff;
