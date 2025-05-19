@@ -83,4 +83,11 @@ typedef struct s_mlx_data
 
 }	t_mlx_data;
 
+typedef struct	s_line
+{
+	t_int_vec	start;
+	t_int_vec	end;
+}	t_line;
+
+
 #endif

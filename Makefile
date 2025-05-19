@@ -6,15 +6,17 @@ LIBFT= ./lib/libft/libft.a
 LIBMLX= ./minilibx-linux/libmlx.a
 
 SRCS= ./src/main.c \
-	  ./src/my_mlx_pixel_put.c \
-	  ./src/init_data.c \
-	  ./src/init_player.c \
-	  ./src/hook.c \
-	  ./src/render_frame.c \
-	  ./src/init_minimap.c \
-	  ./src/draw_minimap.c \
-	  ./src/draw_player.c \
-	  ./src/update_position.c \
+	  ./src/render/my_mlx_pixel_put.c \
+	  ./src/init/init_data.c \
+	  ./src/init/init_minimap.c \
+	  ./src/init/init_player.c \
+	  ./src/event/hook.c \
+	  ./src/event/update_position.c \
+	  ./src/render/render_frame.c \
+	  ./src/render/draw_minimap.c \
+	  ./src/render/draw_player.c \
+	  ./src/raycasting/init_dda.c\
+	  ./src/raycasting/raycasting.c \
 
 OBJS=$(SRCS:.c=.o)
 

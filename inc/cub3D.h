@@ -29,6 +29,8 @@
 #define ROT_SPEED 0.1
 
 #define TILE_SIZE 64
+#define HORIZONTAL 0
+#define VERTICAL 1
 
 /*_______INIT______________*/
 t_mlx_data	init_data(void);
@@ -53,11 +55,17 @@ void	draw_player(t_mlx_data *data);
 /*______MOVEMENT__________*/
 void	update_position(t_mlx_data *data, t_player *player);
 
+/*______RAYCASTING_______*/
+t_vector calculate_ray_dir(t_player *player, int screen_x, int screen_width);
+void	initialize_dda(t_player *player, t_ray *ray);
+void	cast_ray(t_mlx_data *data);
+
 /*_______ERROR_____________*/
 void	put_error(char *error_msg, t_mlx_data *data);
 
-
+/*_______UTILS_____________*/
 t_vector	vec(double x, double y);
 t_vector	get_plane(t_vector dir, double plane_len);
+void		draw_line(t_mlx_data *data, t_line line, int color);
 
 #endif 

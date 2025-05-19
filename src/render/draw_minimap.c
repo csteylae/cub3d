@@ -1,4 +1,4 @@
-#include "../inc/cub3D.h"
+#include "../../inc/cub3D.h"
 
 bool	is_inside_image(t_mlx_data *data, int x, int y)
 {

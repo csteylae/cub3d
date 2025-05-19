@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3D.h" 
+#include "../../inc/cub3D.h" 
 
 int	key_release(int keysym, t_mlx_data *data)
 {
