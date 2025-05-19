@@ -77,46 +77,6 @@ void draw_line(t_mlx_data *data, t_line line, int color)
 }
 
 /*
-void	draw_line(t_mlx_data *data, int x0, int y0, int x1, int y1, int color)
-{
-	//bresenham algo to draw a line
-	int	dx;
-	int	dy;
-	int	sx;
-	int	sy;
-	int	err;
-	int	e2;
-
-	dx = abs(x1- x0);
-	dy = -abs(y1 - y0);
-	sx = get_slope(x0, x1);
-	sy = get_slope(y0, y1);
-	err = dx + dy;
-	while (1)
-	{
-		if (is_inside_image(data, x0, y0))
-			my_pixel_put(&data->framebuffer, x0, y0, color);
-		if (x0 == x1 && y0 == y1)
-			return ;
-		e2 = err * 2;
-		if (e2 >=  dy)
-		{
-			if (x0 == x1)
-				return;
-			err += dy;
-			x0 += sx;
-		}
-		if (e2 <= dx)
-		{
-			if (y0 == y1)
-				return ;
-			err += dx;
-			y0 += sy;
-		}
-	}
-}
-
-*/
 void	draw_square(t_mlx_data *data, int posx, int posy)
 {
 	int	x = 0;
@@ -135,18 +95,41 @@ void	draw_square(t_mlx_data *data, int posx, int posy)
 		y++;
 	}
 }
+*/
 
+void draw_filled_circle(t_mlx_data *data, int center_x, int center_y, int radius, int color)
+{
+    for (int y = -radius; y <= radius; y++)
+    {
+        for (int x = -radius; x <= radius; x++)
+        {
+            // If the point is within the circle's radius
+            if (x*x + y*y <= radius*radius)
+            {
+                int draw_x = center_x + x;
+                int draw_y = center_y + y;
+                
+                if (is_inside_image(data, draw_x, draw_y))
+                    my_pixel_put(&data->framebuffer, draw_x, draw_y, color);
+            }
+        }
+    }
+}
+
+	
 void	draw_player(t_mlx_data *data)
 {
-	//draw square
 	int	player_x = data->player.pos.x * TILE_SIZE;
 	int	player_y = data->player.pos.y * TILE_SIZE;
-
-	draw_square(data, player_x, player_y);
-
-	//draw direction line
-//	int	dirx = player_x + (data->player.dir.x * 50);
-//	int	diry = player_y + (data->player.dir.y * 50);
-
-//	draw_line(data, player_x, player_y, dirx, diry);
+	int	radius = TILE_SIZE / 8;
+	
+	draw_filled_circle(data, player_x, player_y, radius, 0x00ff00);
+	//draw_square(data, player_x, player_y);
+	t_line	dir_line;
+    int dir_line_length = TILE_SIZE / 2;
+    dir_line.end.x = player_x + (int)(data->player.dir.x * dir_line_length);
+    dir_line.end.y = player_y + (int)(data->player.dir.y * dir_line_length);
+	dir_line.start.x = player_x;
+	dir_line.start.y = player_y;
+    draw_line(data, dir_line, 0x0000FF);	
 }
