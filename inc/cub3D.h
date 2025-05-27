@@ -28,6 +28,8 @@
 #define RED 0xff0000
 #define ROT_SPEED 0.1
 
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
 #define TILE_SIZE 64
 #define HORIZONTAL 0
 #define VERTICAL 1

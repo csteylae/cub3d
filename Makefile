@@ -1,6 +1,6 @@
 NAME= cub3D
 CC= cc
-CFLAGS= -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS= -Wall -Wextra -Werror -fsanitize=address
 
 LIBFT= ./lib/libft/libft.a
 LIBMLX= ./minilibx-linux/libmlx.a
@@ -15,6 +15,7 @@ SRCS= ./src/main.c \
 	  ./src/render/render_frame.c \
 	  ./src/render/draw_minimap.c \
 	  ./src/render/draw_player.c \
+	  ./src/render/render_2d.c \
 	  ./src/raycasting/init_dda.c\
 	  ./src/raycasting/raycasting.c \
 

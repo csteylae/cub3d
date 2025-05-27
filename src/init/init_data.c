@@ -29,12 +29,15 @@ static t_key	init_key(void)
 
 void	init_framebuffer(t_mlx_data *data)
 {
+	/*
 	int	width;
 	int	height;
 
 	width = data->map_width;
 	height = data->map_height;
-	data->framebuffer.ptr = mlx_new_image(data->mlx, TILE_SIZE * width, TILE_SIZE * height);
+	*/
+	//data->framebuffer.ptr = mlx_new_image(data->mlx, TILE_SIZE * width, TILE_SIZE * height);
+	data->framebuffer.ptr = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!data->framebuffer.ptr)
 		put_error("mlx_new_image", data);
 	data->framebuffer.pixel_addr = mlx_get_data_addr(data->framebuffer.ptr,
@@ -55,8 +58,9 @@ t_mlx_data	init_data(void)
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		put_error("mlx_init", &data);
-	data.win = mlx_new_window(data.mlx, data.map_width * TILE_SIZE,
-							data.map_height * TILE_SIZE, "test");
+//	data.win = mlx_new_window(data.mlx, data.map_width * TILE_SIZE,
+//							data.map_height * TILE_SIZE, "test");
+	data.win = mlx_new_window(data.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	if (!data.win)
 		put_error("mlx_new_window", &data);
 	init_framebuffer(&data);
