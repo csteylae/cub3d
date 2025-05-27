@@ -42,6 +42,8 @@ void	draw_wall_column(t_mlx_data *data, int x, int draw_start, int draw_end)
 
 	y = 0;
 	color = 0x808080;
+	if (x < 0 || x>= SCREEN_WIDTH)
+		return ;
 	while (y < draw_start)
 	{
 		//draw the ceiling

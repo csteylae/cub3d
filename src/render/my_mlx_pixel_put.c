@@ -12,23 +12,21 @@
 
 #include "../../inc/cub3D.h"
 
-/*
 static bool	is_inside_window(int x, int y)
 {
 	if (x < 0 || y < 0)
-		return (true);
-	if ( x > SCREEN_WIDTH || y > SCREEN_WIDTH)
-		return (true);
-	return (false);
+		return (false);
+	if (x >= SCREEN_WIDTH || y >= SCREEN_WIDTH)
+		return (false);
+	return (true);
 }
-*/
 
 void	my_pixel_put(t_img *img, int x, int y, int color)
 {
 	int	offset;
 
-//	if (!is_inside_window(x, y))
-//		return ;
+	if (!is_inside_window(x, y))
+		return ;
 	offset = (img->line_len * y) + (x * (img->bpp / 8));
 	*((unsigned int *)(offset + img->pixel_addr)) = color;
 }

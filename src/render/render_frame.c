@@ -14,11 +14,9 @@
 
 void	ft_clear_image(t_mlx_data *data)
 {
-	int	img_height;
 	int	total_bytes;
 
-	img_height = data->map_height * TILE_SIZE;
-	total_bytes = img_height * data->framebuffer.line_len;
+	total_bytes = SCREEN_HEIGHT * data->framebuffer.line_len;
 	ft_memset(data->framebuffer.pixel_addr, 0, total_bytes);
 }
 
