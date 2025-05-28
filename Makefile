@@ -13,7 +13,7 @@ SRCS= ./src/main.c \
 	  ./src/event/update_position.c \
 	  ./src/render/render_frame.c \
 	  ./src/render/draw_wall_column.c \
-	  ./src/raycasting/init_dda.c\
+	  ./src/raycasting/dda.c \
 	  ./src/raycasting/raycasting.c \
 	  ./src/minimap/init_minimap.c \
 	  ./src/minimap/draw_minimap.c \

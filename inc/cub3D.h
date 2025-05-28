@@ -24,7 +24,8 @@
 #include "../lib/libft/libft.h"
 #include "../minilibx-linux/mlx.h"
 
-#define PI 3.14159265358979323846
+#define EPSILON 1e-10 //define "close enough to 0" for floating point comparison
+#define SAFE_LARGE_VALUE 1e30
 #define RED 0xff0000
 #define ROT_SPEED 0.1
 
@@ -60,9 +61,10 @@ void	update_position(t_mlx_data *data, t_player *player);
 t_vector	get_perpendicular_plane(t_vector dir, double plane_len);
 
 /*______RAYCASTING_______*/
-t_vector calculate_ray_dir(t_player *player, int screen_x, int screen_width);
+t_vector calculate_ray_dir(t_mlx_data *data, t_player *player, int screen_x, int screen_width);
 void	initialize_dda(t_player *player, t_ray *ray);
 void	cast_ray(t_mlx_data *data);
+void	perform_dda(t_mlx_data *data, t_ray *ray);
 
 /*_______ERROR_____________*/
 void	put_error(char *error_msg, t_mlx_data *data);
