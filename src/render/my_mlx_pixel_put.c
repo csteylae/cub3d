@@ -16,7 +16,7 @@ static bool	is_inside_window(int x, int y)
 {
 	if (x < 0 || y < 0)
 		return (false);
-	if (x >= SCREEN_WIDTH || y >= SCREEN_WIDTH)
+	if (x >= SCREEN_WIDTH || y >= SCREEN_HEIGHT)
 		return (false);
 	return (true);
 }

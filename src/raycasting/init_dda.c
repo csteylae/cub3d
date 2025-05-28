@@ -29,6 +29,32 @@ static t_vector	get_delta_dist(t_vector raydir)
 	return (delta_dist);
 }
 
+/*
+static t_vector	get_delta_dist(t_vector raydir)
+{
+	t_vector	delta_dist;
+	const double EPSILON = 1e-10; // Small threshold for numerical stability
+
+	// Check for very small values instead of exact zero
+	if (fabs(raydir.x) < EPSILON)
+		delta_dist.x = 1e30;
+	else
+		delta_dist.x = fabs(1.0 / raydir.x);
+		
+	if (fabs(raydir.y) < EPSILON)
+		delta_dist.y = 1e30;
+	else
+		delta_dist.y = fabs(1.0 / raydir.y);
+		
+	// Clamp extremely large values to prevent overflow
+	if (delta_dist.x > 1e30)
+		delta_dist.x = 1e30;
+	if (delta_dist.y > 1e30)
+		delta_dist.y = 1e30;
+		
+	return (delta_dist);
+}
+*/
 static t_vector get_side_dist(t_ray *ray, t_vector player_pos)
 {
 	//the distance between the actual player_position from the next grid cell

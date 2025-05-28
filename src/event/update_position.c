@@ -30,6 +30,7 @@ static bool	is_wall_collision(t_mlx_data *data, t_vector pos)
 	return (false);
 }
 
+
 static t_vector	get_new_pos(t_mlx_data *data, t_player *player, char c)
 {
 	// when we move the player, we're changing their position based on their current direction. 

@@ -47,6 +47,7 @@ int		key_release(int keysym, t_mlx_data *data);
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	ft_clear_image(t_mlx_data *data);
 int		render_frame(t_mlx_data *data);
+void	draw_wall_column(t_mlx_data *data, int screen_x, int wall_start, int wall_end);
 
 /*_______MINIMAP___________*/
 void	init_minimap(t_mlx_data *data);
@@ -56,6 +57,7 @@ void	draw_player(t_mlx_data *data);
 
 /*______MOVEMENT__________*/
 void	update_position(t_mlx_data *data, t_player *player);
+t_vector	get_perpendicular_plane(t_vector dir, double plane_len);
 
 /*______RAYCASTING_______*/
 t_vector calculate_ray_dir(t_player *player, int screen_x, int screen_width);

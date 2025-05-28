@@ -29,14 +29,6 @@ static t_key	init_key(void)
 
 void	init_framebuffer(t_mlx_data *data)
 {
-	/*
-	int	width;
-	int	height;
-
-	width = data->map_width;
-	height = data->map_height;
-	*/
-	//data->framebuffer.ptr = mlx_new_image(data->mlx, TILE_SIZE * width, TILE_SIZE * height);
 	data->framebuffer.ptr = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!data->framebuffer.ptr)
 		put_error("mlx_new_image", data);

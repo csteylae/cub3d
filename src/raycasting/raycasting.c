@@ -35,35 +35,6 @@ void	calculate_wall_dist(t_ray *ray)
 		ray->perp_wall_dist = ray->side_dist.y - ray->delta_dist.y;
 }
 
-void	draw_wall_column(t_mlx_data *data, int x, int draw_start, int draw_end)
-{
-	int	y;
-	int	color;
-
-	y = 0;
-	color = 0x808080;
-	if (x < 0 || x>= SCREEN_WIDTH)
-		return ;
-	while (y < draw_start)
-	{
-		//draw the ceiling
-		my_pixel_put(&data->framebuffer, x, y, 0x87ceeb);
-		y++;
-	}
-	y = draw_start;
-	while (y < draw_end)
-	{
-		my_pixel_put(&data->framebuffer,x, y, color);
-		y++;
-	}
-	y = draw_end + 1;
-	while (y < SCREEN_HEIGHT)
-	{
-		my_pixel_put(&data->framebuffer,x, y, 0x228b22);
-		y++;
-	}
-}
-
 void	cast_ray(t_mlx_data *data)
 {
 	int		screen_x;
@@ -79,6 +50,11 @@ void	cast_ray(t_mlx_data *data)
 		initialize_dda(&data->player, &ray);
 		perform_dda(data, &ray);
 		calculate_wall_dist(&ray);
+		if (!isfinite(ray.perp_wall_dist) || ray.perp_wall_dist <= 0)
+		{
+			screen_x++;
+			continue;
+		}
 		wall_height = (int)(SCREEN_HEIGHT / ray.perp_wall_dist);
 		draw_start = -wall_height / 2 + SCREEN_HEIGHT / 2;
 		if (draw_start < 0)
@@ -90,4 +66,3 @@ void	cast_ray(t_mlx_data *data)
 		screen_x++;
 	}
 }
-
