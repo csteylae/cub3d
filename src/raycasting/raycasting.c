@@ -43,10 +43,7 @@ void	cast_ray(t_mlx_data *data)
 		perform_dda(data, &ray);
 		calculate_wall_dist(&ray);
 		if (!isfinite(ray.perp_wall_dist) || ray.perp_wall_dist <= 0.001) // check because we will cast it into int
-		{
-			screen_x++;
-			continue;
-		}
+			ray.perp_wall_dist = 0.01;
 		wall_height = (int)(SCREEN_HEIGHT / ray.perp_wall_dist);
 		draw_start = -wall_height / 2 + SCREEN_HEIGHT / 2;
 		if (draw_start < 0)

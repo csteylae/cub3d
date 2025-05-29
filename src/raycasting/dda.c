@@ -86,7 +86,7 @@ void	initialize_dda(t_player *player, t_ray *ray)
 
 static bool	is_valid_map_position(t_mlx_data *data, int x, int y)
 {
-	if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
+	if (x < 0 || x >= data->map_width || y < 0 || y >= data->map_height)
 		return (false);
 	if (!data->map[y] || !data->map[y][x])
 		return (false);
