@@ -9,6 +9,7 @@ SRCS= ./src/main.c \
 	  ./src/render/my_mlx_pixel_put.c \
 	  ./src/init/init_data.c \
 	  ./src/init/init_player.c \
+	  ./src/init/load_texture.c \
 	  ./src/event/hook.c \
 	  ./src/event/update_position.c \
 	  ./src/render/render_frame.c \

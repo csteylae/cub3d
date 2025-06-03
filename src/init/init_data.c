@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:12:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/05/13 12:57:31 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/03 15:21:08 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,10 @@ t_mlx_data	init_data(void)
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		put_error("mlx_init", &data);
-//	data.win = mlx_new_window(data.mlx, data.map_width * TILE_SIZE,
-//							data.map_height * TILE_SIZE, "test");
 	data.win = mlx_new_window(data.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	if (!data.win)
 		put_error("mlx_new_window", &data);
 	init_framebuffer(&data);
+	init_texture(&data);
 	return (data);	
 }

@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 11:19:28 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/03 13:59:41 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:16:37 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	cast_ray(t_mlx_data *data)
 			ray.perp_wall_dist = 0.01;
 		wall_column = get_wall_column(screen_x, ray);
 		color = get_wall_side(ray);
+		if (ray.side == VERTICAL)
+			color /= 2;
 		draw_wall_column(data, wall_column, color);
 		screen_x++;
 	}

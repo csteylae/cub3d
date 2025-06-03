@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:12:14 by csteylae          #+#    #+#             */
-/*   Updated: 2025/05/05 18:14:38 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/03 15:38:34 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,16 @@
 
 int	close_cub3D(t_mlx_data *data)
 {
-	//mlx_destroy_image(data->mlx, data->wall.ptr);
-	//mlx_destroy_image(data->mlx, data->floor.ptr);
-	mlx_destroy_image(data->mlx, data->framebuffer.ptr);
+	if (data->framebuffer.ptr)
+		mlx_destroy_image(data->mlx, data->framebuffer.ptr);
+	if (data->texture[EAST].img.ptr)
+		mlx_destroy_image(data->mlx, data->texture[EAST].img.ptr);
+	if (data->texture[WEST].img.ptr)
+		mlx_destroy_image(data->mlx, data->texture[WEST].img.ptr);
+	if (data->texture[SOUTH].img.ptr)
+		mlx_destroy_image(data->mlx, data->texture[SOUTH].img.ptr);
+	if (data->texture[NORTH].img.ptr)
+		mlx_destroy_image(data->mlx, data->texture[NORTH].img.ptr);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);

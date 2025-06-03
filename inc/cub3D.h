@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:03:31 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/03 13:57:11 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/03 15:41:37 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@
 #define HORIZONTAL 0
 #define VERTICAL 1
 
+#define EAST 0
+#define WEST 1
+#define SOUTH 2
+#define NORTH 3
+
 #define RED 0xff0000
 #define GREEN 0x00ff00
 #define BLUE 0x0000ff
@@ -43,6 +48,7 @@
 /*_______INIT______________*/
 t_mlx_data	init_data(void);
 t_player	init_player(t_mlx_data *data);
+void		init_texture(t_mlx_data *data);
 
 /*_______EVENT_____________*/
 int		close_cub3D(t_mlx_data *data);

@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:53:00 by csteylae          #+#    #+#             */
-/*   Updated: 2025/05/13 14:57:26 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/03 15:42:49 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ typedef struct	s_img
 	int		endian;
 }	t_img;
 
+typedef struct	s_texture
+{
+	int		width;
+	int		height;
+	t_img	img;
+}	t_texture;
+
 typedef struct	s_key
 {
 	int	w;
@@ -68,6 +75,7 @@ typedef struct	s_player
 	double		rot_speed;
 }	t_player;
 
+
 typedef struct s_mlx_data
 {
 	void				*mlx;
@@ -76,8 +84,7 @@ typedef struct s_mlx_data
 	int					map_width;
 	int					map_height;
 	t_player			player;
-	t_img				wall; //maybe need 4 type of wall + ceiling ? myabe make a texture struct ?
-	t_img				floor;
+	t_texture			texture[4];
 	t_img				framebuffer;
 	t_key				key;
 
