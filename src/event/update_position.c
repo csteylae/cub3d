@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:15:19 by csteylae          #+#    #+#             */
-/*   Updated: 2025/05/13 16:23:41 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/03 11:53:17 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static t_vector	get_new_pos(t_mlx_data *data, t_player *player, char c)
 		new_pos.x = player->pos.x + (player->dir.x * move_speed);
 		new_pos.y = player->pos.y + (player->dir.y * move_speed);
 	}
-	else if (c == 'A')
+	else if (c == 'D')
 	{
 		// we use the left and right relative to the direction the player looks 
 		// math trick : perpendicular vector to the direction vector
@@ -58,7 +58,7 @@ static t_vector	get_new_pos(t_mlx_data *data, t_player *player, char c)
 		new_pos.x = player->pos.x - (player->dir.x * player->move_speed);
 		new_pos.y = player->pos.y - (player->dir.y * player->move_speed); 
 	}
-	else if (c == 'D')
+	else if (c == 'A')
 	{
 		new_pos.x = player->pos.x + (player->dir.y * move_speed);
 		new_pos.y = player->pos.y - (player->dir.x * player->move_speed);

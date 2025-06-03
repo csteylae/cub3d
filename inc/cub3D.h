@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:03:31 by csteylae          #+#    #+#             */
-/*   Updated: 2025/05/13 16:18:08 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:57:11 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@
 #define HORIZONTAL 0
 #define VERTICAL 1
 
+#define RED 0xff0000
+#define GREEN 0x00ff00
+#define BLUE 0x0000ff
+#define YELLOW 0xffff00
+
 /*_______INIT______________*/
 t_mlx_data	init_data(void);
 t_player	init_player(t_mlx_data *data);
@@ -48,7 +53,9 @@ int		key_release(int keysym, t_mlx_data *data);
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	ft_clear_image(t_mlx_data *data);
 int		render_frame(t_mlx_data *data);
-void	draw_wall_column(t_mlx_data *data, int screen_x, int wall_start, int wall_end);
+//void	draw_wall_column(t_mlx_data *data, int screen_x, int wall_start, int wall_end);
+
+void	draw_wall_column(t_mlx_data *data, t_line wall, int color);
 
 /*_______MINIMAP___________*/
 void	init_minimap(t_mlx_data *data);
