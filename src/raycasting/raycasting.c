@@ -34,6 +34,9 @@ static void	calculate_wall_dist(t_ray *ray)
 		ray->perp_wall_dist = ray->side_dist.x - ray->delta_dist.x;
 	else
 		ray->perp_wall_dist = ray->side_dist.y - ray->delta_dist.y;
+	if (!isfinite(ray->perp_wall_dist) || ray->perp_wall_dist <= 0.001)
+		ray->perp_wall_dist = 0.01;
+
 }
 
 static t_line	get_wall_column(int x, t_ray ray)
@@ -81,8 +84,6 @@ void	cast_ray(t_mlx_data *data)
 		initialize_dda(&data->player, &ray);
 		perform_dda(data, &ray);
 		calculate_wall_dist(&ray);
-		if (!isfinite(ray.perp_wall_dist) || ray.perp_wall_dist <= 0.001)
-			ray.perp_wall_dist = 0.01;
 		wall_column = get_wall_column(screen_x, ray);
 		color = get_wall_side(ray);
 		if (ray.side == VERTICAL)
