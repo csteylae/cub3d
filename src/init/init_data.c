@@ -54,6 +54,6 @@ t_mlx_data	init_data(void)
 	if (!data.win)
 		put_error("mlx_new_window", &data);
 	init_framebuffer(&data);
-	init_texture(&data);
+//	init_texture(&data);
 	return (data);	
 }
