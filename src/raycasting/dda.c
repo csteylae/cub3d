@@ -12,30 +12,26 @@
 
 #include"../../inc/cub3D.h"
 
-/* 
- *  The dda algorithm will move from one grid cell to another until
- *  it hits a wall.
+/*
+ * DDA (Digital Differential Analyzer) is used to trace the ray from the player's position
+ * through the grid-based map, stepping from one cell to the next, until a wall is hit.
  *
- *  Once ray.dir is calculated and because it the ray will form an angle
- *  in our map, we need to know the distance the angle of the ray takes 
- *  to travel a whole grid cell (delta_dist),
- *  according,so,  to its direction vector (fabs(1 / ray_dir))
+ * First, we compute `delta_dist`, which represents how far the ray has to travel along
+ * the x or y direction to move from one side of a grid cell to the next.
+ * It's based on the ray direction and uses the formula: delta = fabs(1 / ray_dir).
  *
- * 	Then, because our player can be anywhere within a grid cell 
- * 	(for ex player.pos.x = 2.344, player.pos.y = 1.89), we need to calculate the
- * 	distance it takes from our initial position to the boundary grid, according
- * 	to the direction (that is captured by step :
- * 	if step == 1 it will be right/down and if it -1 it will be left/up).
- * 	According to the direction, the calculation is slightly different dependant
- * 	of the direction.
+ * Then we compute `side_dist`, which is the distance from the player's exact position
+ * to the first x or y grid boundary, depending on the ray direction.
+ * This distance depends on whether the ray is stepping left/right or up/down,
+ * and is used to decide which side the ray hits first.
  *
- *  Once the dda is initialized, we run the loop that
- *  just check which of side_dist.x or y 
- *  is the smaller (aka which one the ray will first encounter) and increment
- *  the ray->map x or y according to this. We continue to move until a wall
- *  is found.
+ * The DDA loop compares `side_dist.x` and `side_dist.y`, and steps through the grid
+ * in the direction of the smaller one. We increment `side_dist` by `delta_dist` at each step
+ * to simulate ray traversal.
  *
- *  */
+ * The loop ends when a wall cell ('1') is encountered, or if the ray goes out of bounds.
+ */
+
 
 static t_vector	get_delta_dist(t_vector raydir)
 {
