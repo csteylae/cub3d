@@ -20,23 +20,20 @@ double	get_exact_wall_hit(t_mlx_data *data, t_ray ray)
 	return (wall_x);
 }
 
-
 int	get_texture_column(double wall_x, t_ray ray)
 {
 	int	tex_column;
 
+	(void)ray;
 	tex_column = (int)(wall_x * TILE_SIZE);
 	if (tex_column < 0)
 		tex_column = 0;
 	if (tex_column >= TILE_SIZE)
 		tex_column = TILE_SIZE - 1;
-
-	// correction du flip selon direction et côté
-	if (ray.side == VERTICAL && ray.dir.x > 0)  // mur Est → on arrive de la gauche
+	if (ray.side == VERTICAL && ray.dir.x > 0)
 		tex_column = TILE_SIZE - tex_column - 1;
-	if (ray.side == HORIZONTAL && ray.dir.y < 0) // mur Nord → on arrive du bas
+	if (ray.side == HORIZONTAL && ray.dir.y < 0)
 		tex_column = TILE_SIZE - tex_column - 1;
-
 	return (tex_column);
 }
 
@@ -59,7 +56,6 @@ int	get_wall_side(t_ray ray)
 	}
 }
 
-
 t_wall	init_wall(t_mlx_data *data, t_ray ray)
 {
 	t_wall wall;
@@ -76,96 +72,90 @@ t_wall	init_wall(t_mlx_data *data, t_ray ray)
 	wall.side = get_wall_side(ray);
 	return (wall);
 }
+
+void	draw_vertical_line(t_mlx_data *data, int x, int y_begin, int y_end, int color)
+{
+	int	y;
+
+	y = y_begin;
+	while (y < y_end)
+	{
+		my_pixel_put(&data->framebuffer, x, y, color);
+		y++;
+	}
+}
+
+void	draw_textured_wall(t_mlx_data *data, t_ray ray, int screen_x)
+{
+	t_wall	wall;
+	int		screen_y;
+	int		tex_step; //increase tex_pos
+	double	tex_pos; //the 
+	int		tex_y; //cast tex_pos into int to get the current row of the texture to render
+	int		color;
+
+	wall = init_wall(data, ray);
+	screen_y = wall.begin;
+	
+	tex_step = 1.0 * TILE_SIZE / wall.height;
+	tex_pos = (wall.begin - SCREEN_HEIGHT / 2 + wall.height / 2) * tex_step;
+
+	draw_vertical_line(data, screen_x, 0, wall.begin, SKY_BLUE);
+	while (screen_y < wall.end)
+	{
+		tex_y = (int)(tex_pos);
+		if (tex_y < 0)
+		   	tex_y = 0;
+		if (tex_y >= TILE_SIZE) 
+			tex_y = TILE_SIZE - 1;
+		tex_pos += tex_step;
+		color = get_pixel_color(data->texture[NORTH].img, wall.tex_col, tex_y);
+		my_pixel_put(&data->framebuffer, screen_x, screen_y, color);
+		screen_y++;
+	}
+	draw_vertical_line(data, screen_x, wall.end, SCREEN_HEIGHT, FOREST_GREEN);
+}
 /*
-int	map_texture_into_wall(t_mlx_data *data, t_wall wall)
+void draw_textured_wall(t_mlx_data *data, t_ray ray, int screen_x)
 {
+	t_wall	wall;
+	int		screen_y;
 	double	step;
 	double	tex_pos;
 	int		tex_y;
 	int		color;
 
+	wall = init_wall(data, ray); // remplit .hit, .tex_col, .height, .begin, .end, .side
+
+	// Calcule combien de pixels de texture on saute à chaque pixel à l'écran
 	step = 1.0 * TILE_SIZE / wall.height;
-	tex_pos = (wall.begin - SCREEN_HEIGHT / 2 + wall.height / 2) * step;
-	tex_y = (int)tex_pos;
-	if (tex_y < 0)
-		tex_y = 0;
-	if (tex_y == TILE_SIZE)
-		tex_y = TILE_SIZE - 1;
-	tex_pos += step;
-	color = get_pixel_color(data->texture[wall.side].img, wall.tex_col, tex_y);
-	return (color);
-}
 
-void	draw_textured_wall(t_mlx_data *data, t_ray ray, int screen_x)
-{
-	t_wall	wall;
-	int		color;
-	int		y;
+	// Point de départ dans la texture (position verticale)
+	tex_pos = (wall.begin - SCREEN_HEIGHT / 2.0 + wall.height / 2.0) * step;
 
-	wall = init_wall(data, ray);
-	y = 0;
-	while (y < wall.begin)
-	{
-		my_pixel_put(&data->framebuffer, screen_x, y, SKY_BLUE);
-		y++;
-	}
-	y = wall.begin;
-	while (y < wall.end)
-	{
-		color = map_texture_into_wall(data, wall);
-		my_pixel_put(&data->framebuffer, screen_x, y, color);
-		y++;
-	}
-	while (y < SCREEN_HEIGHT)
-	{
-		my_pixel_put(&data->framebuffer, screen_x, y, FOREST_GREEN);
-		y++;
-	}
-}
-*/
-void	draw_textured_wall(t_mlx_data *data, t_ray ray, int screen_x)
-{
-	t_wall	wall;
-	double	step;
-	double	tex_pos;
-	int		tex_y;
-	int		color;
-	int		y;
+	// Ciel
+	draw_vertical_line(data, screen_x, 0, wall.begin, SKY_BLUE);
 
-	wall = init_wall(data, ray);
-
-	step = 1.0 * TILE_SIZE / wall.height;
-	tex_pos = 0;//(wall.begin - SCREEN_HEIGHT / 2 + wall.height / 2) * step;
-
-	y = 0;
-	while (y < wall.begin)
-	{
-		my_pixel_put(&data->framebuffer, screen_x, y, SKY_BLUE);
-		y++;
-	}
-	y = wall.begin;
-	while (y < wall.end)
+	// Texture du mur
+	for (screen_y = wall.begin; screen_y < wall.end; screen_y++)
 	{
 		tex_y = (int)tex_pos;
 		if (tex_y < 0)
 			tex_y = 0;
 		if (tex_y >= TILE_SIZE)
 			tex_y = TILE_SIZE - 1;
+
 		tex_pos += step;
 
 		color = get_pixel_color(data->texture[wall.side].img, wall.tex_col, tex_y);
-		my_pixel_put(&data->framebuffer, screen_x, y, color);
-		y++;
+		my_pixel_put(&data->framebuffer, screen_x, screen_y, color);
 	}
-	while (y < SCREEN_HEIGHT)
-	{
-		my_pixel_put(&data->framebuffer, screen_x, y, FOREST_GREEN);
-		y++;
-	}
+
+	// Sol
+	draw_vertical_line(data, screen_x, wall.end, SCREEN_HEIGHT, FOREST_GREEN);
 }
 
 
-/*
 void	draw_textured_wall(t_mlx_data *data, t_ray ray, int screen_x)
 {
 	int		wall_height;
