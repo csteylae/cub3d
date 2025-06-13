@@ -15,11 +15,12 @@
 // we need to work together to understand how to get the textures from .cub file.
 // I will assume we have it now and hardcode their load here but we need a clean way to get them
 
-#define NORTH_TEXT_PATH "../../texture/bebe.xpm"
-#define SOUTH_TEXT_PATH "../../texture/moumoune_rose.xpm"
-#define EAST_TEXT_PATH "../../texture/moumoune_linus.xpm"
-#define WEST_TEXT_PATH "../../texture/loulou.xpm"
-#define TEST "simple.xpm"
+//#define NORTH_TEXT_PATH "../../texture/bebe.xpm"
+//#define SOUTH_TEXT_PATH "../../texture/moumoune_rose.xpm"
+//#define EAST_TEXT_PATH "../../texture/moumoune_linus.xpm"
+//#define WEST_TEXT_PATH "../../texture/loulou.xpm"
+//#define TEST "simple.xpm"
+#define TEST "/home/chloe/Documents/42_github_perso/cub3D/src/init/fibi_64x64.xpm"
 
 
 t_texture	load_texture(t_mlx_data *data, char *path)

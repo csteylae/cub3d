@@ -44,6 +44,9 @@
 #define GREEN 0x00ff00
 #define BLUE 0x0000ff
 #define YELLOW 0xffff00
+#define SKY_BLUE 0x87CEEB
+#define FOREST_GREEN 0x228B22
+
 
 /*_______INIT______________*/
 t_mlx_data	init_data(void);
@@ -59,7 +62,7 @@ int		key_release(int keysym, t_mlx_data *data);
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	ft_clear_image(t_mlx_data *data);
 int		render_frame(t_mlx_data *data);
-//void	draw_wall_column(t_mlx_data *data, int screen_x, int wall_start, int wall_end);
+void	draw_textured_wall(t_mlx_data *data, t_ray ray, int screen_x);
 
 void	draw_wall_column(t_mlx_data *data, t_line wall, int color);
 

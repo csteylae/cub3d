@@ -36,9 +36,8 @@ static void	calculate_wall_dist(t_ray *ray)
 		ray->perp_wall_dist = ray->side_dist.y - ray->delta_dist.y;
 	if (!isfinite(ray->perp_wall_dist) || ray->perp_wall_dist <= 0.001)
 		ray->perp_wall_dist = 0.01;
-
 }
-
+/*
 static t_line	get_wall_column(int x, t_ray ray)
 {
 	int	wall_height;
@@ -54,28 +53,13 @@ static t_line	get_wall_column(int x, t_ray ray)
 	if (wall_column.end.y >= SCREEN_HEIGHT)
 		wall_column.end.y = SCREEN_HEIGHT - 1;
 	return (wall_column);
-}
+}*/
 
-int	get_wall_side(t_ray ray)
-{
-	if (ray.side == HORIZONTAL)
-	{
-		if (ray.step.x > 0) // EAST_SIDE
-			return (RED);
-		return (BLUE); //WEST
-	}
-	if (ray.step.y > 0) // SOUTH
-		return (YELLOW);
-	return (GREEN); //NORTH
-}
 
 void	cast_ray(t_mlx_data *data)
 {
 	int		screen_x;
 	t_ray	ray;
-	t_line	wall_column;
-
-	int	color;
 
 	screen_x = 0;
 	while (screen_x < SCREEN_WIDTH)
@@ -84,11 +68,7 @@ void	cast_ray(t_mlx_data *data)
 		initialize_dda(&data->player, &ray);
 		perform_dda(data, &ray);
 		calculate_wall_dist(&ray);
-		wall_column = get_wall_column(screen_x, ray);
-		color = get_wall_side(ray);
-		if (ray.side == VERTICAL)
-			color /= 2;
-		draw_wall_column(data, wall_column, color);
+		draw_textured_wall(data, ray, screen_x);
 		screen_x++;
 	}
 }

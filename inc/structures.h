@@ -76,6 +76,17 @@ typedef struct	s_player
 }	t_player;
 
 
+typedef struct	s_wall
+{
+
+	int		height;
+	int		begin;
+	int		end;
+	int		side;
+	double	hit;
+	int		tex_col;
+}	t_wall;
+
 typedef struct s_mlx_data
 {
 	void				*mlx;
