@@ -15,14 +15,14 @@
 // we need to work together to understand how to get the textures from .cub file.
 // I will assume we have it now and hardcode their load here but we need a clean way to get them
 
-//#define NORTH_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/fibi_64x64.xpm"
-//#define SOUTH_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/linus_64.xpm"
-//#define EAST_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/bb_64.xpm"
-//#define WEST_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/fi_linus_64.xpm"
-#define NORTH_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/bark.xpm"
-#define SOUTH_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/bookshelf_1_.xpm"
-#define EAST_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/gemov2.xpm"
-#define WEST_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/walkstone_1_.xpm"
+#define NORTH_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/fibi_64x64.xpm"
+#define SOUTH_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/linus_64.xpm"
+#define EAST_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/bb_64.xpm"
+#define WEST_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/fi_linus_64.xpm"
+//#define NORTH_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/bark.xpm"
+//#define SOUTH_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/bookshelf_1_.xpm"
+//#define EAST_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/gemov2.xpm"
+//#define WEST_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/walkstone_1_.xpm"
 
 
 t_texture	load_texture(t_mlx_data *data, char *path)
@@ -35,6 +35,7 @@ t_texture	load_texture(t_mlx_data *data, char *path)
 		printf("%s\n", path);
 		put_error("error: cannot mlx_xpm_file_to_image", data);
 	}
+	printf("img name : %s, width : %d, height : %d\n", path, tex.width, tex.height);
 	tex.img.pixel_addr = mlx_get_data_addr(tex.img.ptr,
 											&tex.img.bpp,
 											&tex.img.line_len,

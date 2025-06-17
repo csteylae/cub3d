@@ -70,6 +70,10 @@ t_wall	init_wall(t_mlx_data *data, t_ray ray)
 	t_wall wall;
 
 	wall.height = (int)SCREEN_HEIGHT / ray.perp_wall_dist;
+	if (wall.height < 0)
+		wall.height = 0;
+	if (wall.height > SCREEN_HEIGHT * 3)
+		wall.height = SCREEN_HEIGHT *3;
 	wall.begin = -wall.height / 2 + SCREEN_HEIGHT / 2;
 	if (wall.begin < 0)
 		wall.begin = 0;
@@ -96,6 +100,11 @@ void draw_textured_wall(t_mlx_data *data, t_ray ray, int screen_x)
     step = 1.0 * TILE_SIZE / wall.height;
     tex_pos = (wall.begin - SCREEN_HEIGHT / 2.0 + wall.height / 2.0) * step;
 	screen_y = wall.begin;
+	if (ray.perp_wall_dist < 0.05)  // Very close walls
+{
+    printf("Close wall: perp_dist=%.4f, height=%d, step=%.6f\n",
+           ray.perp_wall_dist, wall.height, step);
+}
     draw_vertical_line(data, screen_x, 0, wall.begin, SKY_BLUE);
 	while (screen_y < wall.end)
 	{
