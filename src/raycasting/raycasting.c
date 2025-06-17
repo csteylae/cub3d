@@ -30,31 +30,13 @@ t_vector	calculate_ray_dir(t_mlx_data *data, t_player *player, int screen_x, int
 
 static void	calculate_wall_dist(t_ray *ray)
 {
-	if (ray->side == HORIZONTAL)
+	if (ray->side == 0)
 		ray->perp_wall_dist = ray->side_dist.x - ray->delta_dist.x;
 	else
 		ray->perp_wall_dist = ray->side_dist.y - ray->delta_dist.y;
 	if (!isfinite(ray->perp_wall_dist) || ray->perp_wall_dist <= 0.001)
 		ray->perp_wall_dist = 0.01;
 }
-/*
-static t_line	get_wall_column(int x, t_ray ray)
-{
-	int	wall_height;
-	t_line	wall_column;
-
-	wall_height = (int)SCREEN_HEIGHT / ray.perp_wall_dist;
-	wall_column.start.x = x;
-	wall_column.start.y = -wall_height / 2 + SCREEN_HEIGHT / 2;
-	if (wall_column.start.y < 0)
-		wall_column.start.y = 0;
-	wall_column.end.x = x;
-	wall_column.end.y = wall_height / 2 + SCREEN_HEIGHT / 2;
-	if (wall_column.end.y >= SCREEN_HEIGHT)
-		wall_column.end.y = SCREEN_HEIGHT - 1;
-	return (wall_column);
-}*/
-
 
 void	cast_ray(t_mlx_data *data)
 {

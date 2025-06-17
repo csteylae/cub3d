@@ -109,13 +109,13 @@ void	perform_dda(t_mlx_data *data, t_ray *ray)
 		{
 			ray->side_dist.x += ray->delta_dist.x;
 			ray->map.x += ray->step.x;
-			ray->side = HORIZONTAL;
+			ray->side = 0;
 		}
 		else
 		{
 			ray->side_dist.y += ray->delta_dist.y;
 			ray->map.y += ray->step.y;
-			ray->side = VERTICAL;
+			ray->side = 1;
 		}
 		if (!is_valid_map_position(data, ray->map.x, ray->map.y))
 		{

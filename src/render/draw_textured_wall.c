@@ -12,52 +12,33 @@ double get_exact_wall_hit(t_mlx_data *data, t_ray ray)
 {
     double wall_x;
 
-    if (ray.side == VERTICAL)
-        wall_x = data->player.pos.x + ray.perp_wall_dist * ray.dir.x; 
+    if (ray.side == 0)
+        wall_x = data->player.pos.y + ray.perp_wall_dist * ray.dir.y; 
     else 
-        wall_x = data->player.pos.y + ray.perp_wall_dist * ray.dir.y;
+        wall_x = data->player.pos.x + ray.perp_wall_dist * ray.dir.x;
     
     wall_x -= floor(wall_x); 
     return (wall_x);
 }
 
-/*
-int	get_texture_column(double wall_x, t_ray ray)
-{
-	int	tex_column;
-
-	(void)ray;
-	tex_column = (int)(wall_x * TILE_SIZE);
-	if (tex_column < 0)
-		tex_column = 0;
-	if (tex_column >= TILE_SIZE)
-		tex_column = TILE_SIZE - 1;
-	if (ray.side == VERTICAL && ray.dir.x > 0)
-		tex_column = TILE_SIZE - tex_column - 1;
-	if (ray.side == HORIZONTAL && ray.dir.y < 0)
-		tex_column = TILE_SIZE - tex_column - 1;
-	return (tex_column);
-}
-*/
 int get_texture_column(double wall_x, t_ray ray)
 {
     int tex_column;
-
     tex_column = (int)(wall_x * TILE_SIZE);
     if (tex_column < 0)
         tex_column = 0;
     if (tex_column >= TILE_SIZE)
         tex_column = TILE_SIZE - 1;
-    if (ray.side == HORIZONTAL && ray.dir.x > 0)
+    if (ray.side == 0 && ray.dir.x > 0)
         tex_column = TILE_SIZE - tex_column - 1;
-    if (ray.side == VERTICAL && ray.dir.y < 0)
+    if (ray.side == 1 && ray.dir.y < 0)
         tex_column = TILE_SIZE - tex_column - 1;
     return (tex_column);
 }
 
 int	get_wall_side(t_ray ray)
 {
-	if (ray.side == VERTICAL) 
+	if (ray.side == 0) 
 	{
 		if (ray.step.x > 0)
 			return (EAST);
