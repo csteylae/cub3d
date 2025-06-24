@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 11:19:28 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/03 14:16:37 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:52:58 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,22 @@ t_vector	calculate_ray_dir(t_mlx_data *data, t_player *player, int screen_x, int
 
 static void	calculate_wall_dist(t_ray *ray)
 {
+	double	min_wall_dist;
+	
+	min_wall_dist = 0.1;
 	if (ray->side == 0)
 		ray->perp_wall_dist = ray->side_dist.x - ray->delta_dist.x;
 	else
 		ray->perp_wall_dist = ray->side_dist.y - ray->delta_dist.y;
-	if (!isfinite(ray->perp_wall_dist) || ray->perp_wall_dist <= 0.001)
-		ray->perp_wall_dist = 0.01;
+	if (!isfinite(ray->perp_wall_dist) || ray->perp_wall_dist <= min_wall_dist)
+		ray->perp_wall_dist = min_wall_dist;
 }
 
 void	cast_ray(t_mlx_data *data)
 {
 	int		screen_x;
 	t_ray	ray;
+	t_wall	wall;
 
 	screen_x = 0;
 	while (screen_x < SCREEN_WIDTH)
@@ -50,7 +54,8 @@ void	cast_ray(t_mlx_data *data)
 		initialize_dda(&data->player, &ray);
 		perform_dda(data, &ray);
 		calculate_wall_dist(&ray);
-		draw_textured_wall(data, ray, screen_x);
+		wall = init_wall(data, ray);
+		draw_textured_wall(data, screen_x, wall);
 		screen_x++;
 	}
 }

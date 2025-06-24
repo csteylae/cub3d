@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:52:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/05/13 14:58:08 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:48:09 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_vector	get_player_pos(t_mlx_data *data)
 		while (data->map[y][x])
 		{
 			if (is_player_found(data->map[y][x]))
-				return (vec(x, y));
+				return (vec(x + 0.5, y + 0.5));
 			x++;
 		}
 		y++;

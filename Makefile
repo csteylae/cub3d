@@ -14,6 +14,7 @@ SRCS= ./src/main.c \
 	  ./src/event/update_position.c \
 	  ./src/render/render_frame.c \
 	  ./src/render/draw_textured_wall.c \
+	  ./src/render/init_wall.c \
 	  ./src/raycasting/dda.c \
 	  ./src/raycasting/raycasting.c \
 	  ./src/minimap/init_minimap.c \

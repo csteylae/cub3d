@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:15:19 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/03 11:53:17 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:55:20 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,32 @@ static void	rotate(t_player *player, double angle)
 	player->plane.y = (old_plane_x * sin(angle)) + (player->plane.y * cos(angle));
 }
 
+
 static bool	is_wall_collision(t_mlx_data *data, t_vector pos)
 {
-	if (data->map[(int)pos.y][(int)pos.x] == '1')
+	double collision_buffer;
+
+	collision_buffer = 0.2;
+	if (data->map[(int)(pos.y + collision_buffer)][(int)(pos.x + collision_buffer)] == '1' ||
+		data->map[(int)(pos.y - collision_buffer)][(int)(pos.x + collision_buffer)] == '1' ||
+		data->map[(int)(pos.y + collision_buffer)][(int)(pos.x - collision_buffer)] == '1' ||
+		data->map[(int)(pos.y - collision_buffer)][(int)(pos.x - collision_buffer)] == '1')
 		return (true);
 	return (false);
 }
 
-
 static t_vector	get_new_pos(t_mlx_data *data, t_player *player, char c)
 {
-	// when we move the player, we're changing their position based on their current direction. 
-	// The basic formula is new_pos = current_pos + (move_speed * dir)
-	//this setup will works for the  2D top-down view and the 3D 1st person view
 	t_vector	new_pos;
-	double		move_speed;
 
-	move_speed = player->move_speed;
 	new_pos = player->pos;
-	if (c == 'W') //move forward
+	if (c == 'W')
 	{
-		new_pos.x = player->pos.x + (player->dir.x * move_speed);
-		new_pos.y = player->pos.y + (player->dir.y * move_speed);
+		new_pos.x = player->pos.x + (player->dir.x * player->move_speed);
+		new_pos.y = player->pos.y + (player->dir.y * player->move_speed);
 	}
 	else if (c == 'D')
 	{
-		// we use the left and right relative to the direction the player looks 
-		// math trick : perpendicular vector to the direction vector
 		new_pos.x = player->pos.x - (player->dir.y * player->move_speed);
 		new_pos.y = player->pos.y + (player->dir.x * player->move_speed);
 	}
@@ -60,7 +59,7 @@ static t_vector	get_new_pos(t_mlx_data *data, t_player *player, char c)
 	}
 	else if (c == 'A')
 	{
-		new_pos.x = player->pos.x + (player->dir.y * move_speed);
+		new_pos.x = player->pos.x + (player->dir.y * player->move_speed);
 		new_pos.y = player->pos.y - (player->dir.x * player->move_speed);
 	}
 	if (!is_wall_collision(data, new_pos))

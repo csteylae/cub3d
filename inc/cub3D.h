@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:03:31 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/03 15:41:37 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:14:54 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@
 
 #define EPSILON 1e-10 //define "close enough to 0" for floating point comparison
 #define SAFE_LARGE_VALUE 1e30
-#define RED 0xff0000
-#define ROT_SPEED 0.1
 
+#define PITCH 100
 #define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 600
+#define SCREEN_HEIGHT 800
 #define TILE_SIZE 64
 
 #define EAST 0
@@ -44,7 +43,6 @@
 #define YELLOW 0xffff00
 #define SKY_BLUE 0x87CEEB
 #define FOREST_GREEN 0x228B22
-
 
 /*_______INIT______________*/
 t_mlx_data	init_data(void);
@@ -60,9 +58,10 @@ int		key_release(int keysym, t_mlx_data *data);
 void	my_pixel_put(t_img *img, int x, int y, int color);
 void	ft_clear_image(t_mlx_data *data);
 int		render_frame(t_mlx_data *data);
-void	draw_textured_wall(t_mlx_data *data, t_ray ray, int screen_x);
+void	draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall);
+t_wall	init_wall(t_mlx_data *data, t_ray ray);
 
-void	draw_wall_column(t_mlx_data *data, t_line wall, int color);
+//void	draw_wall_column(t_mlx_data *data, t_line wall, int color);
 
 /*_______MINIMAP___________*/
 void	init_minimap(t_mlx_data *data);
