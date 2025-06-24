@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 11:19:28 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/24 15:52:58 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/24 16:26:24 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ t_vector	calculate_ray_dir(t_mlx_data *data, t_player *player, int screen_x, int
 
 static void	calculate_wall_dist(t_ray *ray)
 {
-	double	min_wall_dist;
+//	double	min_wall_dist;
 	
-	min_wall_dist = 0.1;
+//	min_wall_dist = 0.1;
 	if (ray->side == 0)
 		ray->perp_wall_dist = ray->side_dist.x - ray->delta_dist.x;
 	else
 		ray->perp_wall_dist = ray->side_dist.y - ray->delta_dist.y;
-	if (!isfinite(ray->perp_wall_dist) || ray->perp_wall_dist <= min_wall_dist)
-		ray->perp_wall_dist = min_wall_dist;
+//	if (!isfinite(ray->perp_wall_dist) || ray->perp_wall_dist <= min_wall_dist)
+//		ray->perp_wall_dist = min_wall_dist;
 }
 
 void	cast_ray(t_mlx_data *data)

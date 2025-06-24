@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:01:56 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/24 14:42:58 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/24 16:36:12 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,12 @@ void draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall)
     int color;
 
     step = 1.0 * TILE_SIZE / wall.height;
-	if (step < 0.05)
-		step = 0.05;
     tex_pos = (wall.begin - SCREEN_HEIGHT / 2.0 + wall.height / 2.0) * step;
 	screen_y = wall.begin;
     draw_vertical_line(data, screen_x, 0, wall.begin, SKY_BLUE);
 	while (screen_y < wall.end)
 	{
-       tex_y = (int)tex_pos;
+       tex_y = (int)tex_pos & (TILE_SIZE - 1);
        if (tex_y < 0)
            tex_y = 0;
        if (tex_y >= TILE_SIZE)

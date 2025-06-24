@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:03:51 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/24 15:05:59 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/24 16:42:12 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static double get_exact_wall_hit(t_mlx_data *data, t_ray ray)
         hit = data->player.pos.x + ray.perp_wall_dist * ray.dir.x;
     
     hit -= floor(hit); 
-//	if (hit < 0)
-//		hit = 0;
-//	if (hit >= 1.0)
-//		hit = 0.999;
+	if (hit < 0)
+		hit = 0;
+	if (hit >= 1.0)
+		hit = 0.999;
 	return (hit);
 }
 
@@ -73,12 +73,12 @@ t_wall	init_wall(t_mlx_data *data, t_ray ray)
 //		printf("wall_height = 0\n");
 		wall.height = 0;
 	}
-	if (wall.height > SCREEN_HEIGHT - 1)
-	{
+//	if (wall.height > SCREEN_HEIGHT - 1)
+//	{
 //		printf("player pos : player X : %f, player y: %f\n\n", data->player.pos.x, data->player.pos.y); 
 //		printf("wall_height = SCREEN HEIGHT -1\n");
-		wall.height = SCREEN_HEIGHT - 1;
-	}
+//		wall.height = SCREEN_HEIGHT - 1;
+//	}
 //	printf("wall.height : %i\n", wall.height);
 	wall.begin = -wall.height / 2 + SCREEN_HEIGHT / 2;
 	if (wall.begin < 0)
