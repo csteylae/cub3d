@@ -116,6 +116,8 @@ typedef struct s_data
 	int		check_ceiling_color;
 	int		nb_map_lines;
 	char	**map_copy;
+	int		floor_color;
+	int		ceilling_color;
 }	t_data;
 
 #endif
