@@ -19,10 +19,14 @@
 # include <X11/keysym.h>
 # include <stdio.h>
 # include <stdbool.h>
+#include <fcntl.h>
+#include <string.h>
 
 # include "structures.h"
 # include "../lib/libft/libft.h"
 # include "../minilibx-linux/mlx.h"
+#include "../src/rachel/get_next_line/get_next_line.h"
+#include "../minilibx-linux/mlx.h"
 
 # define EPSILON 1e-10 //def "close enough to 0" for floating point comparison
 # define SAFE_LARGE_VALUE 1e30
@@ -87,5 +91,31 @@ void		put_error(char *error_msg, t_mlx_data *data);
 t_vector	vec(double x, double y);
 t_vector	get_plane(t_vector dir, double plane_len);
 void		draw_line(t_mlx_data *data, t_line line, int color);
+
+/*______________RACHEL______________*/
+/*________UTILS________*/
+void	ft_error(char *str);
+void	ft_free_error(char *str, t_data *game);
+int 	check_north(t_data *game, char *line);
+int 	check_south(t_data *game, char *line);
+int 	check_west(t_data *game, char *line);
+int		check_east(t_data *game, char *line);
+char	**copy_map(char **src_map);
+
+/*________INIT________*/
+void    init_game_struct(t_data *game);
+
+/*________PARSE________*/
+void    parse(t_data *game, char *file);
+int		check_texture(t_data *game, char *line);
+int		check_textures_path(char *path);
+void	check_texture_exist(t_data *game);
+void	textures_own_path(t_data *game);
+int		check_color(t_data *game, char *line);
+int		parse_map(t_data *game, char **lines);
+int		maps_content(char *line);
+
+/*________CHECK_MAP________*/
+void    map_is_valid(t_data *game);
 
 #endif
