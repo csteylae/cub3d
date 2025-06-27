@@ -6,20 +6,20 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:40:40 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 11:48:09 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:43:19 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3D.h"
 
-#define NORTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/fibi_64x64.xpm"
-#define SOUTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/linus_64.xpm"
-#define EAST_TEXT "/home/csteylae/42common_core/cub3d/src/init/bb_64.xpm"
-#define WEST_TEXT "/home/csteylae/42common_core/cub3d/src/init/fi_linus_64.xpm"
-//#define NORTH_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/bark.xpm"
-//#define SOUTH_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/bookshelf_1_.xpm"
-//#define EAST_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/gemov2.xpm"
-//#define WEST_TEXT "/home/chloe/Documents/42_github_perso/cub3D/src/init/walkstone_1_.xpm"
+//#define NORTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/fibi_64x64.xpm"
+//#define SOUTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/linus_64.xpm"
+//#define EAST_TEXT "/home/csteylae/42common_core/cub3d/src/init/bb_64.xpm"
+//#define WEST_TEXT "/home/csteylae/42common_core/cub3d/src/init/fi_linus_64.xpm"
+#define NORTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/bark.xpm"
+#define SOUTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/bookshelf_1_.xpm"
+#define EAST_TEXT "/home/csteylae/42common_core/cub3d/src/init/gemov2.xpm"
+#define WEST_TEXT "/home/csteylae/42common_core/cub3d/src/init/walkstone_1_.xpm"
 
 t_texture	load_texture(t_mlx_data *data, char *path)
 {

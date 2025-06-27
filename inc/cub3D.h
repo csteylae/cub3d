@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:03:31 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 11:31:58 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:39:38 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define EPSILON 1e-10 //def "close enough to 0" for floating point comparison
 # define SAFE_LARGE_VALUE 1e30
 
-# define SCREEN_WIDTH 800
+# define SCREEN_WIDTH 600
 # define SCREEN_HEIGHT 800
 # define TILE_SIZE 64
 

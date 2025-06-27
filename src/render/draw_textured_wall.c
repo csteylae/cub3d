@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:01:56 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 12:34:09 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:34:59 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,82 +20,54 @@ int	get_pixel_color(t_img img, int x, int y)
 	return (*(int *)pixel);
 }
 
-void	draw_vertical_line(t_mlx_data *data, int x, int y_begin, int y_end, int color)
+void	draw_ceiling(t_mlx_data *data, int screen_x, int y_begin, int y_end)
 {
 	int	y;
 
 	y = y_begin;
 	while (y < y_end)
 	{
-		my_pixel_put(&data->framebuffer, x, y, color);
+		my_pixel_put(&data->framebuffer, screen_x, y, data->ceiling);
 		y++;
 	}
 }
 
-void draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall)
+void	draw_ground(t_mlx_data *data, int screen_x, int y_begin, int y_end)
 {
-	int 	screen_y;
+	int	y;
+
+	y = y_begin;
+	while (y < y_end)
+	{
+		my_pixel_put(&data->framebuffer, screen_x, y, data->ground);
+		y++;
+	}
+}
+
+void	draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall)
+{
+	int		screen_y;
 	double	step;
-	double 	tex_pos;
-	int 	tex_y;
-	int 	color;
+	double	tex_pos;
+	int		tex_y;
+	int		color;
 
-    step = 1.0 * TILE_SIZE / wall.height;
-    tex_pos = (wall.begin - SCREEN_HEIGHT / 2.0 + wall.height / 2.0) * step;
+	step = 1.0 * TILE_SIZE / wall.height;
+	tex_pos = (wall.begin - SCREEN_HEIGHT / 2.0 + wall.height / 2.0) * step;
 	screen_y = wall.begin;
-    draw_vertical_line(data, screen_x, 0, wall.begin, SKY_BLUE);
+	draw_ceiling(data, screen_x, 0, wall.begin);
 	while (screen_y < wall.end)
 	{
-       tex_y = (int)tex_pos & (TILE_SIZE - 1);
-       if (tex_y < 0)
-           tex_y = 0;
-       if (tex_y >= TILE_SIZE)
-           tex_y = TILE_SIZE - 1;
-       tex_pos += step;
-       color = get_pixel_color(data->texture[wall.side].img, wall.tex_col, tex_y);
-       my_pixel_put(&data->framebuffer, screen_x, screen_y, color);
-	   screen_y++;
+		tex_y = (int)tex_pos & (TILE_SIZE - 1);
+		if (tex_y < 0)
+			tex_y = 0;
+		if (tex_y >= TILE_SIZE)
+			tex_y = TILE_SIZE - 1;
+		tex_pos += step;
+		color = get_pixel_color(data->texture[wall.side].img, wall.tex_col,
+				tex_y);
+		my_pixel_put(&data->framebuffer, screen_x, screen_y, color);
+		screen_y++;
 	}
-	draw_vertical_line(data, screen_x, wall.end, SCREEN_HEIGHT, FOREST_GREEN);
+	draw_ground(data, screen_x, wall.end, SCREEN_HEIGHT);
 }
-
-/*
-void	draw_vertical_line(t_mlx_data *data, int x, int y_begin, int y_end, int color)
-{
-	int	y;
-
-	y = y_begin;
-	while (y < y_end)
-	{
-		my_pixel_put(&data->framebuffer, x, y, color);
-		y++;
-	}
-}
-
-void draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall)
-{
-    int 	screen_y;
-    double	step;
-    double 	tex_pos;
-    int 	tex_y;
-    int 	color;
-
-    step = 1.0 * TILE_SIZE / wall.height;
-    tex_pos = (wall.begin - SCREEN_HEIGHT / 2.0 + wall.height / 2.0) * step;
-	screen_y = wall.begin;
-    draw_vertical_line(data, screen_x, 0, wall.begin, SKY_BLUE);
-	while (screen_y < wall.end)
-	{
-       tex_y = (int)tex_pos & (TILE_SIZE - 1);
-       if (tex_y < 0)
-           tex_y = 0;
-       if (tex_y >= TILE_SIZE)
-           tex_y = TILE_SIZE - 1;
-       tex_pos += step;
-       color = get_pixel_color(data->texture[wall.side].img, wall.tex_col, tex_y);
-       my_pixel_put(&data->framebuffer, screen_x, screen_y, color);
-	   screen_y++;
-	}
-	draw_vertical_line(data, screen_x, wall.end, SCREEN_HEIGHT, FOREST_GREEN);
-}
-*/

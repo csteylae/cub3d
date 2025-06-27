@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:27:57 by csteylae          #+#    #+#             */
-/*   Updated: 2025/05/13 16:15:50 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:03:56 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int	render_frame(t_mlx_data *data)
 {
 	ft_clear_image(data);
 	update_position(data, &data->player);
-//	draw_map(data);
 	cast_ray(data);
-//	draw_player(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->framebuffer.ptr, 0, 0);
-//	printf("player pos : %f %f\n\n", data->player.pos.x, data->player.pos.y);
 	return (0);
 }

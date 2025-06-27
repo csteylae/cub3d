@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:12:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 11:52:03 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:28:37 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ t_mlx_data	init_data(void)
 	t_mlx_data	data;
 
 	init_minimap(&data);
+//	get_info(&data);
+	data.ceiling = SKY_BLUE;
+	data.ground = FOREST_GREEN;
 	data.player = init_player(&data);
 	data.key = init_key();
 	data.mlx = mlx_init();

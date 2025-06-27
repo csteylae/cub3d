@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:53:00 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 10:51:22 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:17:36 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ typedef struct s_mlx_data
 	t_texture			texture[4];
 	t_img				framebuffer;
 	t_key				key;
+	int					ceiling;
+	int					ground;
 
 }	t_mlx_data;
 
