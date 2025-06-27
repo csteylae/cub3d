@@ -1,0 +1,1 @@
+->pas oublier d'implementer fonction strcmp et retirer librairie.

@@ -37,9 +37,20 @@ void	put_error(char *error_msg, t_mlx_data *data)
 	close_cub3D(data);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
+	int		len;
+	t_data	game;
 	t_mlx_data	data;
+
+	if (argc != 2)
+		ft_error("Error\nNot the right amount of arguments!\n");
+	len = ft_strlen(argv[1]);
+	if ((ft_strncmp(argv[1] + len - 4, ".cub", 4)) != 0)
+		ft_error("Error\nMap format is invalid!\n");//Vérifie format map.
+	init_game_struct(&game);//Initialise tous les éléments de ma structure principale.
+	parse(&game, argv[1]);//Parsing du fichier .cub.
+	map_is_valid(&game);//Validité de ma map.
 
 	data = init_data();
 	mlx_hook(data.win, 17, 0, close_cub3D, &data);

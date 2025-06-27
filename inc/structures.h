@@ -107,4 +107,17 @@ typedef struct s_line
 	t_int_vec	end;
 }	t_line;
 
+/*______________RACHEL______________*/
+typedef struct s_data
+{
+	char	**map;
+	char	*texture[4];
+	int		check_floor_color;
+	int		check_ceiling_color;
+	int		nb_map_lines;
+	char	**map_copy;
+
+
+}	t_data;
+
 #endif
