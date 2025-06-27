@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:01:56 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 15:34:59 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:12:16 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	draw_ground(t_mlx_data *data, int screen_x, int y_begin, int y_end)
 	y = y_begin;
 	while (y < y_end)
 	{
-		my_pixel_put(&data->framebuffer, screen_x, y, data->ground);
+		my_pixel_put(&data->framebuffer, screen_x, y, data->floor);
 		y++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:12:14 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/03 15:38:34 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:52:52 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
 	parse(&game, argv[1]);//Parsing du fichier .cub.
 	map_is_valid(&game);//Validité de ma map.
 
-	data = init_data();
+	data = init_data(game);
 	mlx_hook(data.win, 17, 0, close_cub3D, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, key_press, &data);
 	mlx_hook(data.win, KeyRelease, KeyReleaseMask, key_release, &data);

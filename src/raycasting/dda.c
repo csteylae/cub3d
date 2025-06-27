@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 11:20:10 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 12:10:45 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 17:05:47 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,6 @@ void	initialize_dda(t_player *player, t_ray *ray)
 
 static bool	is_valid_map_position(t_mlx_data *data, int x, int y)
 {
-	if (x < 0 || x >= data->map_width || y < 0 || y >= data->map_height)
-		return (false);
 	if (!data->map[y] || !data->map[y][x])
 		return (false);
 	return (true);

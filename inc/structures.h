@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:53:00 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 15:17:36 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:14:08 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_img
 
 typedef struct s_texture
 {
+	char	*path;
 	int		width;
 	int		height;
 	t_img	img;
@@ -97,8 +98,7 @@ typedef struct s_mlx_data
 	t_img				framebuffer;
 	t_key				key;
 	int					ceiling;
-	int					ground;
-
+	int					floor;
 }	t_mlx_data;
 
 typedef struct s_line
@@ -116,8 +116,6 @@ typedef struct s_data
 	int		check_ceiling_color;
 	int		nb_map_lines;
 	char	**map_copy;
-
-
 }	t_data;
 
 #endif

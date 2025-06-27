@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:40:40 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 14:43:19 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:43:42 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 //#define SOUTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/linus_64.xpm"
 //#define EAST_TEXT "/home/csteylae/42common_core/cub3d/src/init/bb_64.xpm"
 //#define WEST_TEXT "/home/csteylae/42common_core/cub3d/src/init/fi_linus_64.xpm"
-#define NORTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/bark.xpm"
-#define SOUTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/bookshelf_1_.xpm"
-#define EAST_TEXT "/home/csteylae/42common_core/cub3d/src/init/gemov2.xpm"
-#define WEST_TEXT "/home/csteylae/42common_core/cub3d/src/init/walkstone_1_.xpm"
+//#define NORTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/bark.xpm"
+//#define SOUTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/bookshelf_1_.xpm"
+//#define EAST_TEXT "/home/csteylae/42common_core/cub3d/src/init/gemov2.xpm"
+//#define WEST_TEXT "/home/csteylae/42common_core/cub3d/src/init/walkstone_1_.xpm"
 
 t_texture	load_texture(t_mlx_data *data, char *path)
 {
@@ -47,8 +47,8 @@ void	init_img(t_mlx_data *data)
 void	init_texture(t_mlx_data *data)
 {
 	init_img(data);
-	data->texture[EAST] = load_texture(data, EAST_TEXT);
-	data->texture[WEST] = load_texture(data, WEST_TEXT);
-	data->texture[SOUTH] = load_texture(data, SOUTH_TEXT);
-	data->texture[NORTH] = load_texture(data, NORTH_TEXT);
+	data->texture[EAST] = load_texture(data, data->texture[EAST].path);
+	data->texture[WEST] = load_texture(data, data->texture[WEST].path);
+	data->texture[SOUTH] = load_texture(data, data->texture[SOUTH].path);
+	data->texture[NORTH] = load_texture(data, data->texture[NORTH].path);
 }

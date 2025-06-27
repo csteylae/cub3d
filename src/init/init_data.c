@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:12:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 15:28:37 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:14:35 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,23 @@ void	init_framebuffer(t_mlx_data *data)
 		put_error("mlx_get_data_addr", data);
 }
 
-t_mlx_data	init_data(void)
+void	get_info(t_mlx_data *data, t_data game)
+{
+	data->map = game.map;
+	data->texture[NORTH].path = game.texture[NORTH];
+	data->texture[SOUTH].path = game.texture[SOUTH];
+	data->texture[WEST].path = game.texture[WEST];
+	data->texture[EAST].path = game.texture[EAST];
+}
+
+t_mlx_data	init_data(t_data game)
 {
 	t_mlx_data	data;
 
-	init_minimap(&data);
-//	get_info(&data);
+//	init_minimap(&data);
+	get_info(&data, game);
 	data.ceiling = SKY_BLUE;
-	data.ground = FOREST_GREEN;
+	data.floor = FOREST_GREEN;
 	data.player = init_player(&data);
 	data.key = init_key();
 	data.mlx = mlx_init();
