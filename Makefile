@@ -12,6 +12,7 @@ SRCS= ./src/main.c \
 	  ./src/init/init_texture.c \
 	  ./src/event/hook.c \
 	  ./src/event/update_position.c \
+	  ./src/event/movement.c \
 	  ./src/render/render_frame.c \
 	  ./src/render/draw_textured_wall.c \
 	  ./src/render/init_wall.c \

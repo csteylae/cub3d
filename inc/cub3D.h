@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:03:31 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/24 12:14:54 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 11:31:58 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,34 @@
 
 # define CUB3D_H
 
-#include <math.h>
-#include <X11/X.h>
-#include <X11/keysym.h>
-#include <stdio.h>
-#include <stdbool.h>
+# include <math.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include <stdio.h>
+# include <stdbool.h>
 
-#include "structures.h"
-#include "../lib/libft/libft.h"
-#include "../minilibx-linux/mlx.h"
+# include "structures.h"
+# include "../lib/libft/libft.h"
+# include "../minilibx-linux/mlx.h"
 
-#define EPSILON 1e-10 //define "close enough to 0" for floating point comparison
-#define SAFE_LARGE_VALUE 1e30
+# define EPSILON 1e-10 //def "close enough to 0" for floating point comparison
+# define SAFE_LARGE_VALUE 1e30
 
-#define PITCH 100
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 800
-#define TILE_SIZE 64
+# define SCREEN_WIDTH 800
+# define SCREEN_HEIGHT 800
+# define TILE_SIZE 64
 
-#define EAST 0
-#define WEST 1
-#define SOUTH 2
-#define NORTH 3
+# define EAST 0
+# define WEST 1
+# define SOUTH 2
+# define NORTH 3
 
-#define RED 0xff0000
-#define GREEN 0x00ff00
-#define BLUE 0x0000ff
-#define YELLOW 0xffff00
-#define SKY_BLUE 0x87CEEB
-#define FOREST_GREEN 0x228B22
+# define RED 0xff0000
+# define GREEN 0x00ff00
+# define BLUE 0x0000ff
+# define YELLOW 0xffff00
+# define SKY_BLUE 0x87CEEB
+# define FOREST_GREEN 0x228B22
 
 /*_______INIT______________*/
 t_mlx_data	init_data(void);
@@ -50,41 +49,43 @@ t_player	init_player(t_mlx_data *data);
 void		init_texture(t_mlx_data *data);
 
 /*_______EVENT_____________*/
-int		close_cub3D(t_mlx_data *data);
-int		key_press(int keysym, t_mlx_data *data);
-int		key_release(int keysym, t_mlx_data *data);
+int			close_cub3D(t_mlx_data *data);
+int			key_press(int keysym, t_mlx_data *data);
+int			key_release(int keysym, t_mlx_data *data);
 
-/*_______IMAGE RENDERING */ 
-void	my_pixel_put(t_img *img, int x, int y, int color);
-void	ft_clear_image(t_mlx_data *data);
-int		render_frame(t_mlx_data *data);
-void	draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall);
-t_wall	init_wall(t_mlx_data *data, t_ray ray);
-
-//void	draw_wall_column(t_mlx_data *data, t_line wall, int color);
+/*_______IMAGE RENDERING __*/
+void		my_pixel_put(t_img *img, int x, int y, int color);
+void		ft_clear_image(t_mlx_data *data);
+int			render_frame(t_mlx_data *data);
+void		draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall);
+t_wall		init_wall(t_mlx_data *data, t_ray ray);
 
 /*_______MINIMAP___________*/
-void	init_minimap(t_mlx_data *data);
-void	draw_map(t_mlx_data *data);
-bool	is_inside_image(t_mlx_data *data, int x, int y);
-void	draw_player(t_mlx_data *data);
+void		init_minimap(t_mlx_data *data);
+void		draw_map(t_mlx_data *data);
+bool		is_inside_image(t_mlx_data *data, int x, int y);
+void		draw_player(t_mlx_data *data);
 
 /*______MOVEMENT__________*/
-void	update_position(t_mlx_data *data, t_player *player);
+void		update_position(t_mlx_data *data, t_player *player);
 t_vector	get_perpendicular_plane(t_vector dir, double plane_len);
+t_vector	move_forward(t_mlx_data *data, t_player *player);
+t_vector	move_backward(t_mlx_data *data, t_player *player);
+t_vector	strafe_right(t_mlx_data *data, t_player *player);
+t_vector	strafe_left(t_mlx_data *data, t_player *player);
 
 /*______RAYCASTING_______*/
-t_vector calculate_ray_dir(t_mlx_data *data, t_player *player, int screen_x, int screen_width);
-void	initialize_dda(t_player *player, t_ray *ray);
-void	cast_ray(t_mlx_data *data);
-void	perform_dda(t_mlx_data *data, t_ray *ray);
+t_vector	calculate_ray_dir(t_mlx_data *data, t_player *p, int x, int width);
+void		initialize_dda(t_player *player, t_ray *ray);
+void		cast_ray(t_mlx_data *data);
+void		perform_dda(t_mlx_data *data, t_ray *ray);
 
 /*_______ERROR_____________*/
-void	put_error(char *error_msg, t_mlx_data *data);
+void		put_error(char *error_msg, t_mlx_data *data);
 
 /*_______UTILS_____________*/
 t_vector	vec(double x, double y);
 t_vector	get_plane(t_vector dir, double plane_len);
 void		draw_line(t_mlx_data *data, t_line line, int color);
 
-#endif 
+#endif

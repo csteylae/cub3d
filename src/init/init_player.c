@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:52:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/24 16:19:30 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 11:54:07 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,9 @@ t_player	init_player(t_mlx_data *data)
 
 	player.pos = get_player_pos(data);
 	player.dir = get_dir(data, player.pos);
-	player.fov = (66 * M_PI) / 180; 
-	//player.plane_len = tan(player.fov / 2);
+	player.fov = (66 * M_PI) / 180;
 	player.plane_len = 0.66;
-
-	player.plane = get_perpendicular_plane(player.dir, player.plane_len);;
+	player.plane = get_perpendicular_plane(player.dir, player.plane_len);
 	player.move_speed = 0.02;
 	player.rot_speed = 0.02;
 	return (player);
