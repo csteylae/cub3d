@@ -1,8 +1,13 @@
 #include "../../../inc/cub3D.h"
 
-static int	create_rgb(int r, int g, int b)
+/*static int	create_rgb(int r, int g, int b)
 {
 	return ((r << 24) | (g << 16) | (b << 8));
+}*/
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return ((t << 24) | (r << 16) | (g << 8) | b);
 }
 
 static void free_str_array(char **arr)
@@ -56,7 +61,7 @@ static int	parse_color(char *str)//Check RGB.
 	while (i < 3)
 		free(cleaned[i++]);
 	free_str_array(rgb);
-	return (create_rgb(r, g, b));
+	return (create_rgb(0, r, g, b));
 }
 
 int	check_color(t_data *game, char *line)
@@ -90,7 +95,7 @@ int	check_color(t_data *game, char *line)
 			ft_error("ERROR: Color value is missing!\n");
 		}
 		game->check_ceiling_color = 1;
-		game->ceilling_color = parse_color(value);
+		game->ceiling_color = parse_color(value);
 		printf("%s\n", line);
 		free(value);
 		return (1);
