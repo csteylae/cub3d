@@ -61,7 +61,7 @@ static int	parse_color(char *str)//Check RGB.
 	while (i < 3)
 		free(cleaned[i++]);
 	free_str_array(rgb);
-	return (create_rgb(0, r, g, b));
+	return (create_trgb(0, r, g, b));
 }
 
 int	check_color(t_data *game, char *line)

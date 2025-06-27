@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:03:51 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 15:11:11 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 18:32:33 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ static double	get_exact_wall_hit(t_mlx_data *data, t_ray ray)
 	else
 		hit = data->player.pos.x + ray.perp_wall_dist * ray.dir.x;
 	hit -= floor(hit);
-	if (hit < 0)
-		hit = 0;
-	if (hit >= 1.0)
-		hit = 0.999;
 	return (hit);
 }
 
@@ -66,7 +62,7 @@ t_wall	init_wall(t_mlx_data *data, t_ray ray)
 {
 	t_wall	wall;
 
-	wall.height = (int)SCREEN_HEIGHT / ray.perp_wall_dist;
+	wall.height = (int)(SCREEN_HEIGHT / ray.perp_wall_dist);
 	if (wall.height < 0)
 		wall.height = 0;
 	wall.begin = -wall.height / 2 + SCREEN_HEIGHT / 2;

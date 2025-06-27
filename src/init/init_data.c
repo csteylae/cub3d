@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:12:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 16:14:35 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/06/27 18:22:53 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	get_info(t_mlx_data *data, t_data game)
 	data->texture[SOUTH].path = game.texture[SOUTH];
 	data->texture[WEST].path = game.texture[WEST];
 	data->texture[EAST].path = game.texture[EAST];
+	data->floor = game.floor_color; 
+	data->ceiling = game.ceiling_color;
 }
 
 t_mlx_data	init_data(t_data game)
@@ -55,8 +57,8 @@ t_mlx_data	init_data(t_data game)
 
 //	init_minimap(&data);
 	get_info(&data, game);
-	data.ceiling = SKY_BLUE;
-	data.floor = FOREST_GREEN;
+//	data.ceiling = SKY_BLUE;
+//	data.floor = FOREST_GREEN;
 	data.player = init_player(&data);
 	data.key = init_key();
 	data.mlx = mlx_init();
