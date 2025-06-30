@@ -19,14 +19,12 @@
 # include <X11/keysym.h>
 # include <stdio.h>
 # include <stdbool.h>
-#include <fcntl.h>
-#include <string.h>
-
+# include <fcntl.h>
+# include <string.h>
 # include "structures.h"
 # include "../lib/libft/libft.h"
+# include "../lib/gnl/get_next_line.h"
 # include "../minilibx-linux/mlx.h"
-#include "../src/rachel/get_next_line/get_next_line.h"
-#include "../minilibx-linux/mlx.h"
 
 # define EPSILON 1e-10 //def "close enough to 0" for floating point comparison
 # define SAFE_LARGE_VALUE 1e30

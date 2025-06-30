@@ -22,17 +22,17 @@ SRCS= ./src/main.c \
 	  ./src/minimap/draw_minimap.c \
 	  ./src/minimap/draw_player.c \
 	  ./src/minimap/render_2d.c \
-	  	src/rachel/get_next_line/get_next_line.c \
-		src/rachel/get_next_line/get_next_line_utils.c \
-		src/rachel/utils/utils_error.c\
-		src/rachel/init/init_game_struct.c\
-		src/rachel/parsing/parse.c\
-		src/rachel/parsing/check_texture.c\
-		src/rachel/utils/texture_utils.c\
-		src/rachel/parsing/check_color.c\
-		src/rachel/parsing/parse_map.c\
-		src/rachel/parsing/check_map.c\
-		src/rachel/utils/map_utils.c\
+	  ./lib/gnl/get_next_line.c \
+	  ./lib/gnl/get_next_line_utils.c \
+	  ./src/input_parsing/utils/utils_error.c\
+	  ./src/input_parsing/init/init_game_struct.c\
+	  ./src/input_parsing/parsing/parse.c\
+	  ./src/input_parsing/parsing/check_texture.c\
+	  ./src/input_parsing/utils/texture_utils.c\
+	  ./src/input_parsing/parsing/check_color.c\
+	  ./src/input_parsing/parsing/parse_map.c\
+	  ./src/input_parsing/parsing/check_map.c\
+	  ./src/input_parsing/utils/map_utils.c\
 
 
 OBJS=$(SRCS:.c=.o)

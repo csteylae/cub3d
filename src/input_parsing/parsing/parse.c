@@ -26,7 +26,10 @@ static char **read_lines(char *file)
 		ft_error("Error\nFailure reopening file\n");
 	lines = malloc(sizeof(char *) * (count + 1));
 	if (!lines)
-		ft_error("Error\nMalloc failed\n");
+	{
+		ft_error("Error\nMalloc failed\n"); 
+		close(fd);
+	}
 	while ((line = get_next_line(fd)) != NULL)
 		lines[i++] = line;
 	lines[i] = NULL;

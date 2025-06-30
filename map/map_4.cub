@@ -1,7 +1,7 @@
-NO /home/csteylae/42common_core/cub3d/src/init/fibi_64x64.xpm
-SO /home/csteylae/42common_core/cub3d/src/init/linus_64.xpm
-WE /home/csteylae/42common_core/cub3d/src/init/bb_64.xpm
-EA /home/csteylae/42common_core/cub3d/src/init/fi_linus_64.xpm
+NO ./textures/fibi_64x64.xpm
+SO ./textures/fi_linus_64.xpm
+WE ./textures/mimikai.xpm
+EA ./textures/mimidown.xpm
 
 F 1, 90, 3
 C 0,0,120
