@@ -107,6 +107,7 @@ static bool	is_valid_map_position(t_mlx_data *data, int x, int y)
 
 void	perform_dda(t_mlx_data *data, t_ray *ray)
 {
+	initialize_dda(&data->player, ray);
 	while (ray->hit == false)
 	{
 		if (ray->side_dist.x < ray->side_dist.y)

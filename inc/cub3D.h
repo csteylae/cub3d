@@ -63,6 +63,7 @@ void		ft_clear_image(t_mlx_data *data);
 int			render_frame(t_mlx_data *data);
 void		draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall);
 t_wall		init_wall(t_mlx_data *data, t_ray ray);
+void		draw_3d_wall(t_mlx_data *data);
 
 /*_______MINIMAP___________*/
 void		init_minimap(t_mlx_data *data);
@@ -79,9 +80,9 @@ t_vector	strafe_right(t_mlx_data *data, t_player *player);
 t_vector	strafe_left(t_mlx_data *data, t_player *player);
 
 /*______RAYCASTING_______*/
-t_vector	calculate_ray_dir(t_mlx_data *data, t_player *p, int x, int width);
+//	calculate_ray_dir(t_mlx_data *data, t_player *p, int x, int width);
 void		initialize_dda(t_player *player, t_ray *ray);
-void		cast_ray(t_mlx_data *data);
+t_ray		cast_ray(t_mlx_data *data, int x);
 void		perform_dda(t_mlx_data *data, t_ray *ray);
 
 /*_______ERROR_____________*/
@@ -91,6 +92,7 @@ void		put_error(char *error_msg, t_mlx_data *data);
 t_vector	vec(double x, double y);
 t_vector	get_plane(t_vector dir, double plane_len);
 void		draw_line(t_mlx_data *data, t_line line, int color);
+int			get_pixel_color(t_img img, int pixel_x, int pixel_y);
 
 /*______________RACHEL______________*/
 /*________UTILS________*/

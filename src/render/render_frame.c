@@ -12,19 +12,27 @@
 
 #include "../../inc/cub3D.h"
 
-void	ft_clear_image(t_mlx_data *data)
+void	draw_3d_wall(t_mlx_data *data)
 {
-	int	total_bytes;
+	int 	x;
+	t_ray	ray;
+	t_wall	wall;
 
-	total_bytes = SCREEN_HEIGHT * data->framebuffer.line_len;
-	ft_memset(data->framebuffer.pixel_addr, 0, total_bytes);
+	x = 0;
+	while (x < SCREEN_WIDTH)
+	{
+		ray = cast_ray(data, x);
+		wall = init_wall(data, ray);
+		draw_textured_wall(data, x, wall);
+		x++;
+	}
 }
 
 int	render_frame(t_mlx_data *data)
 {
 	ft_clear_image(data);
 	update_position(data, &data->player);
-	cast_ray(data);
+	draw_3d_wall(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->framebuffer.ptr, 0, 0);
 	return (0);
 }

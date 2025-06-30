@@ -12,14 +12,6 @@
 
 #include "../../inc/cub3D.h"
 
-int	get_pixel_color(t_img img, int x, int y)
-{
-	char	*pixel;
-
-	pixel = img.pixel_addr + (y * img.line_len) + (x * (img.bpp / 8));
-	return (*(int *)pixel);
-}
-
 void	draw_ceiling(t_mlx_data *data, int screen_x, int y_begin, int y_end)
 {
 	int	y;
