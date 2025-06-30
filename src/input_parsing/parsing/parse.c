@@ -27,8 +27,8 @@ static char **read_lines(char *file)
 	lines = malloc(sizeof(char *) * (count + 1));
 	if (!lines)
 	{
-		ft_error("Error\nMalloc failed\n"); 
 		close(fd);
+		ft_error("Error\nMalloc failed\n"); 
 	}
 	while ((line = get_next_line(fd)) != NULL)
 		lines[i++] = line;
