@@ -1,5 +1,6 @@
 #include "../../inc/cub3D.h"
 
+/*
 static int	get_width_map(char **map)
 {
 	int	width;
@@ -30,7 +31,7 @@ static char	**get_map(void)
 	};
 	return (map);
 }
-
+*/
 t_vector	vec(double x, double y)
 {
 	t_vector	vec;
@@ -42,7 +43,8 @@ t_vector	vec(double x, double y)
 
 void	init_minimap(t_mlx_data *data)
 {
-	data->map = get_map();
-	data->map_height = get_height_map(data->map);
-	data->map_width = get_width_map(data->map);
+	(void)data;
+//	data->map = get_map();
+//	data->map_height = get_height_map(data->map);
+//	data->map_width = get_width_map(data->map);
 }

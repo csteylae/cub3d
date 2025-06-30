@@ -49,6 +49,8 @@
 t_mlx_data	init_data(t_data game);
 t_player	init_player(t_mlx_data *data);
 void		init_texture(t_mlx_data *data);
+t_img		init_img(void);
+void		init_framebuffer(t_mlx_data *data);
 
 /*_______EVENT_____________*/
 int			close_cub3D(t_mlx_data *data);

@@ -38,23 +38,6 @@ typedef struct s_ray
 	int			side;
 }	t_ray;
 
-typedef struct s_img
-{
-	void	*ptr;
-	char	*pixel_addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}	t_img;
-
-typedef struct s_texture
-{
-	char	*path;
-	int		width;
-	int		height;
-	t_img	img;
-}	t_texture;
-
 typedef struct s_key
 {
 	int	w;
@@ -86,13 +69,28 @@ typedef struct s_wall
 	int		tex_col;
 }	t_wall;
 
+typedef struct s_img
+{
+	void	*ptr;
+	char	*pixel_addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
+
+typedef struct s_texture
+{
+	char	*path;
+	int		width;
+	int		height;
+	t_img	img;
+}	t_texture;
+
 typedef struct s_mlx_data
 {
 	void				*mlx;
 	void				*win;
 	char				**map;
-	int					map_width;
-	int					map_height;
 	t_player			player;
 	t_texture			texture[4];
 	t_img				framebuffer;

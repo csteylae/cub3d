@@ -25,22 +25,22 @@ static t_key	init_key(void)
 	return (key);
 }
 
-void	init_framebuffer(t_mlx_data *data)
+static t_mlx_data init_ptr(void)
 {
-	data->framebuffer.ptr = mlx_new_image(data->mlx,
-			SCREEN_WIDTH,
-			SCREEN_HEIGHT);
-	if (!data->framebuffer.ptr)
-		put_error("mlx_new_image", data);
-	data->framebuffer.pixel_addr = mlx_get_data_addr(data->framebuffer.ptr,
-			&data->framebuffer.bpp,
-			&data->framebuffer.line_len,
-			&data->framebuffer.endian);
-	if (!data->framebuffer.pixel_addr)
-		put_error("mlx_get_data_addr", data);
+	t_mlx_data data;
+
+	data.mlx = NULL;
+	data.win = NULL;
+	data.map = NULL;
+	data.texture[NORTH].img = init_img();
+	data.texture[SOUTH].img= init_img();
+	data.texture[EAST].img = init_img();
+	data.texture[WEST].img = init_img();
+	data.framebuffer = init_img();
+	return (data);
 }
 
-void	get_info(t_mlx_data *data, t_data game)
+static void	get_config(t_mlx_data *data, t_data game)
 {
 	data->map = game.map;
 	data->texture[NORTH].path = game.texture[NORTH];
@@ -51,14 +51,21 @@ void	get_info(t_mlx_data *data, t_data game)
 	data->ceiling = game.ceiling_color;
 }
 
+t_vector	vec(double x, double y)
+{
+	t_vector	vec;
+
+	vec.x = x;
+	vec.y = y;
+	return (vec);
+}
+
 t_mlx_data	init_data(t_data game)
 {
 	t_mlx_data	data;
 
-//	init_minimap(&data);
-	get_info(&data, game);
-//	data.ceiling = SKY_BLUE;
-//	data.floor = FOREST_GREEN;
+	data = init_ptr();
+	get_config(&data, game);
 	data.player = init_player(&data);
 	data.key = init_key();
 	data.mlx = mlx_init();

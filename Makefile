@@ -8,6 +8,7 @@ LIBMLX= ./minilibx-linux/libmlx.a
 SRCS= ./src/main.c \
 	  ./src/render/my_mlx_pixel_put.c \
 	  ./src/init/init_data.c \
+	  ./src/init/init_img.c \
 	  ./src/init/init_player.c \
 	  ./src/init/init_texture.c \
 	  ./src/event/hook.c \
@@ -18,10 +19,6 @@ SRCS= ./src/main.c \
 	  ./src/render/init_wall.c \
 	  ./src/raycasting/dda.c \
 	  ./src/raycasting/raycasting.c \
-	  ./src/minimap/init_minimap.c \
-	  ./src/minimap/draw_minimap.c \
-	  ./src/minimap/draw_player.c \
-	  ./src/minimap/render_2d.c \
 	  ./lib/gnl/get_next_line.c \
 	  ./lib/gnl/get_next_line_utils.c \
 	  ./src/input_parsing/utils/utils_error.c\
@@ -33,6 +30,11 @@ SRCS= ./src/main.c \
 	  ./src/input_parsing/parsing/parse_map.c\
 	  ./src/input_parsing/parsing/check_map.c\
 	  ./src/input_parsing/utils/map_utils.c\
+#	  ./src/minimap/init_minimap.c \
+#	  ./src/minimap/draw_minimap.c \
+#	  ./src/minimap/draw_player.c \
+#	  ./src/minimap/render_2d.c \
+
 
 
 OBJS=$(SRCS:.c=.o)

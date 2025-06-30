@@ -12,43 +12,22 @@
 
 #include "../../inc/cub3D.h"
 
-//#define NORTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/fibi_64x64.xpm"
-//#define SOUTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/linus_64.xpm"
-//#define EAST_TEXT "/home/csteylae/42common_core/cub3d/src/init/bb_64.xpm"
-//#define WEST_TEXT "/home/csteylae/42common_core/cub3d/src/init/fi_linus_64.xpm"
-//#define NORTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/bark.xpm"
-//#define SOUTH_TEXT "/home/csteylae/42common_core/cub3d/src/init/bookshelf_1_.xpm"
-//#define EAST_TEXT "/home/csteylae/42common_core/cub3d/src/init/gemov2.xpm"
-//#define WEST_TEXT "/home/csteylae/42common_core/cub3d/src/init/walkstone_1_.xpm"
-
-t_texture	load_texture(t_mlx_data *data, char *path)
+void	load_texture(t_mlx_data *data, t_texture *tex)
 {
-	t_texture	tex;
-
-	tex.img.ptr = mlx_xpm_file_to_image(data->mlx, path,
-			&tex.width, &tex.height);
-	if (!tex.img.ptr)
+	tex->img.ptr = mlx_xpm_file_to_image(data->mlx, tex->path,
+			&tex->width, &tex->height);
+	if (!tex->img.ptr)
 		put_error("error: cannot mlx_xpm_file_to_image", data);
-	tex.img.pixel_addr = mlx_get_data_addr(tex.img.ptr, &tex.img.bpp,
-			&tex.img.line_len, &tex.img.endian);
-	if (!tex.img.pixel_addr)
+	tex->img.pixel_addr = mlx_get_data_addr(tex->img.ptr, &tex->img.bpp,
+			&tex->img.line_len, &tex->img.endian);
+	if (!tex->img.pixel_addr)
 		put_error("error: cannot mlx_get_pixel_addr", data);
-	return (tex);
-}
-
-void	init_img(t_mlx_data *data)
-{
-	data->texture[EAST].img.ptr = NULL;
-	data->texture[WEST].img.ptr = NULL;
-	data->texture[SOUTH].img.ptr = NULL;
-	data->texture[NORTH].img.ptr = NULL;
 }
 
 void	init_texture(t_mlx_data *data)
 {
-	init_img(data);
-	data->texture[EAST] = load_texture(data, data->texture[EAST].path);
-	data->texture[WEST] = load_texture(data, data->texture[WEST].path);
-	data->texture[SOUTH] = load_texture(data, data->texture[SOUTH].path);
-	data->texture[NORTH] = load_texture(data, data->texture[NORTH].path);
+	load_texture(data, &data->texture[NORTH]);
+	load_texture(data, &data->texture[SOUTH]);
+	load_texture(data, &data->texture[EAST]);
+	load_texture(data, &data->texture[WEST]);
 }

@@ -24,9 +24,13 @@ int	close_cub3D(t_mlx_data *data)
 		mlx_destroy_image(data->mlx, data->texture[SOUTH].img.ptr);
 	if (data->texture[NORTH].img.ptr)
 		mlx_destroy_image(data->mlx, data->texture[NORTH].img.ptr);
-	mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
+	if (data->mlx && data->win)
+		mlx_destroy_window(data->mlx, data->win);
+	if (data->mlx)
+	{
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+	}
 	exit(EXIT_SUCCESS);
 }
 
@@ -51,7 +55,6 @@ int main(int argc, char **argv)
 	init_game_struct(&game);//Initialise tous les éléments de ma structure principale.
 	parse(&game, argv[1]);//Parsing du fichier .cub.
 	map_is_valid(&game);//Validité de ma map.
-
 	data = init_data(game);
 	mlx_hook(data.win, 17, 0, close_cub3D, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, key_press, &data);
