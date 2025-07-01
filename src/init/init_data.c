@@ -40,7 +40,7 @@ static t_mlx_data init_ptr(void)
 	return (data);
 }
 
-static void	get_config(t_mlx_data *data, t_data game)
+static void	get_cub_config(t_mlx_data *data, t_data game)
 {
 	data->map = game.map;
 	data->texture[NORTH].path = game.texture[NORTH];
@@ -65,7 +65,7 @@ t_mlx_data	init_data(t_data game)
 	t_mlx_data	data;
 
 	data = init_ptr();
-	get_config(&data, game);
+	get_cub_config(&data, game);
 	data.player = init_player(&data);
 	data.key = init_key();
 	data.mlx = mlx_init();

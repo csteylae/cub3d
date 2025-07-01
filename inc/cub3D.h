@@ -72,15 +72,17 @@ bool		is_inside_image(t_mlx_data *data, int x, int y);
 void		draw_player(t_mlx_data *data);
 
 /*______MOVEMENT__________*/
-void		update_position(t_mlx_data *data, t_player *player);
+void		update_player_position(t_mlx_data *data, t_player *player);
 t_vector	get_perpendicular_plane(t_vector dir, double plane_len);
-t_vector	move_forward(t_mlx_data *data, t_player *player);
-t_vector	move_backward(t_mlx_data *data, t_player *player);
-t_vector	strafe_right(t_mlx_data *data, t_player *player);
-t_vector	strafe_left(t_mlx_data *data, t_player *player);
+//void	move_player(t_mlx_data	*data, t_vector move_dir);
+void	move_forward(t_mlx_data *data, t_vector dir);
+void	move_backward(t_mlx_data *data, t_vector dir);
+void	strafe_right(t_mlx_data *data, t_vector dir);
+void	strafe_left(t_mlx_data *data, t_vector dir);
+void	rotate(t_player *player, double rot_angle);
+bool	is_wall_collision(t_mlx_data *data, t_vector pos);
 
 /*______RAYCASTING_______*/
-//	calculate_ray_dir(t_mlx_data *data, t_player *p, int x, int width);
 void		initialize_dda(t_player *player, t_ray *ray);
 t_ray		cast_ray(t_mlx_data *data, int x);
 void		perform_dda(t_mlx_data *data, t_ray *ray);

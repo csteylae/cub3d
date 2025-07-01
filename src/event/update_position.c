@@ -12,29 +12,29 @@
 
 #include "../../inc/cub3D.h"
 
-static void	rotate(t_player *player, double angle)
+bool	is_wall_collision(t_mlx_data *data, t_vector pos)
 {
-	t_vector	prev_dir;
-	t_vector	prev_plane;
+	double	buffer;
 
-	prev_dir = player->dir;
-	prev_plane = player->plane;
-	player->dir.x = (prev_dir.x * cos(angle)) - (prev_dir.y * sin(angle));
-	player->dir.y = (prev_dir.x * sin(angle)) + (prev_dir.y * cos(angle));
-	player->plane.x = (prev_plane.x * cos(angle)) - (prev_plane.y * sin(angle));
-	player->plane.y = (prev_plane.x * sin(angle)) + (prev_plane.y * cos(angle));
+	buffer = 0.1;
+	if (data->map[(int)(pos.y + buffer)][(int)(pos.x + buffer)] == '1' ||
+		data->map[(int)(pos.y - buffer)][(int)(pos.x + buffer)] == '1' ||
+		data->map[(int)(pos.y + buffer)][(int)(pos.x - buffer)] == '1' ||
+		data->map[(int)(pos.y - buffer)][(int)(pos.x - buffer)] == '1')
+		return (true);
+	return (false);
 }
 
-void	update_position(t_mlx_data *data, t_player *player)
+void	update_player_position(t_mlx_data *data, t_player *player)
 {
 	if (data->key.w)
-		player->pos = move_forward(data, player);
+		move_forward(data, player->dir);
 	if (data->key.a)
-		player->pos = strafe_left(data, player);
+		strafe_left(data, player->dir);
 	if (data->key.s)
-		player->pos = move_backward(data, player);
+		move_backward(data, player->dir);
 	if (data->key.d)
-		player->pos = strafe_right(data, player);
+		strafe_right(data, player->dir);
 	if (data->key.left)
 		rotate(&data->player, -player->rot_speed);
 	if (data->key.right)

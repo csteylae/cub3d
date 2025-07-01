@@ -12,7 +12,7 @@
 
 #include "../../inc/cub3D.h"
 
-void	draw_ceiling(t_mlx_data *data, int screen_x, int y_begin, int y_end)
+static void	draw_ceiling(t_mlx_data *data, int screen_x, int y_begin, int y_end)
 {
 	int	y;
 
@@ -24,7 +24,7 @@ void	draw_ceiling(t_mlx_data *data, int screen_x, int y_begin, int y_end)
 	}
 }
 
-void	draw_ground(t_mlx_data *data, int screen_x, int y_begin, int y_end)
+static void	draw_ground(t_mlx_data *data, int screen_x, int y_begin, int y_end)
 {
 	int	y;
 
@@ -41,7 +41,7 @@ void	draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall)
 	int		screen_y;
 	double	step;
 	double	tex_pos;
-	int		tex_y;
+	int		tex_row;
 	int		color;
 
 	step = 1.0 * TILE_SIZE / wall.height;
@@ -50,14 +50,14 @@ void	draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall)
 	draw_ceiling(data, screen_x, 0, wall.begin);
 	while (screen_y < wall.end)
 	{
-		tex_y = (int)tex_pos & (TILE_SIZE - 1);
-		if (tex_y < 0)
-			tex_y = 0;
-		if (tex_y >= TILE_SIZE)
-			tex_y = TILE_SIZE - 1;
+		tex_row = (int)tex_pos & (TILE_SIZE - 1);
+		if (tex_row < 0)
+			tex_row = 0;
+		if (tex_row >= TILE_SIZE)
+			tex_row = TILE_SIZE - 1;
 		tex_pos += step;
 		color = get_pixel_color(data->texture[wall.side].img, wall.tex_col,
-				tex_y);
+				tex_row);
 		my_pixel_put(&data->framebuffer, screen_x, screen_y, color);
 		screen_y++;
 	}

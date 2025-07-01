@@ -12,59 +12,36 @@
 
 #include "../../inc/cub3D.h"
 
-static bool	is_wall_collision(t_mlx_data *data, t_vector pos)
+static void	move_player(t_mlx_data	*data, double dir_x, double dir_y)
 {
-	double	buffer;
-
-	buffer = 0.2;
-	if (data->map[(int)(pos.y + buffer)][(int)(pos.x + buffer)] == '1' ||
-		data->map[(int)(pos.y - buffer)][(int)(pos.x + buffer)] == '1' ||
-		data->map[(int)(pos.y + buffer)][(int)(pos.x - buffer)] == '1' ||
-		data->map[(int)(pos.y - buffer)][(int)(pos.x - buffer)] == '1')
-		return (true);
-	return (false);
-}
-
-t_vector	move_forward(t_mlx_data *data, t_player *player)
-{
+	t_vector	pos;
+	double		speed;
 	t_vector	new_pos;
 
-	new_pos.x = player->pos.x + (player->dir.x * player->move_speed);
-	new_pos.y = player->pos.y + (player->dir.y * player->move_speed);
+	pos = data->player.pos;
+	speed = data->player.move_speed;
+	new_pos.x = pos.x + dir_x * speed;
+	new_pos.y = pos.y + dir_y * speed;
 	if (!is_wall_collision(data, new_pos))
-		return (new_pos);
-	return (player->pos);
+		data->player.pos = new_pos;
 }
 
-t_vector	strafe_right(t_mlx_data *data, t_player *player)
+void	move_forward(t_mlx_data *data, t_vector dir)
 {
-	t_vector	new_pos;
-
-	new_pos.x = player->pos.x - (player->dir.y * player->move_speed);
-	new_pos.y = player->pos.y + (player->dir.x * player->move_speed);
-	if (!is_wall_collision(data, new_pos))
-		return (new_pos);
-	return (player->pos);
+	move_player(data, dir.x, dir.y);
 }
 
-t_vector	move_backward(t_mlx_data *data, t_player *player)
+void	move_backward(t_mlx_data *data, t_vector dir)
 {
-	t_vector	new_pos;
-
-	new_pos.x = player->pos.x - (player->dir.x * player->move_speed);
-	new_pos.y = player->pos.y - (player->dir.y * player->move_speed);
-	if (!is_wall_collision(data, new_pos))
-		return (new_pos);
-	return (player->pos);
+	move_player(data, -dir.x, -dir.y);
 }
 
-t_vector	strafe_left(t_mlx_data *data, t_player *player)
+void	strafe_right(t_mlx_data *data, t_vector dir)
 {
-	t_vector	new_pos;
+	move_player(data, -dir.y, dir.x);
+}
 
-	new_pos.x = player->pos.x + (player->dir.y * player->move_speed);
-	new_pos.y = player->pos.y - (player->dir.x * player->move_speed);
-	if (!is_wall_collision(data, new_pos))
-		return (new_pos);
-	return (player->pos);
+void	strafe_left(t_mlx_data *data, t_vector dir)
+{
+	move_player(data, dir.y, -dir.x);
 }

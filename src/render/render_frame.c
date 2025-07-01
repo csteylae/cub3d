@@ -31,7 +31,7 @@ void	draw_3d_wall(t_mlx_data *data)
 int	render_frame(t_mlx_data *data)
 {
 	ft_clear_image(data);
-	update_position(data, &data->player);
+	update_player_position(data, &data->player);
 	draw_3d_wall(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->framebuffer.ptr, 0, 0);
 	return (0);

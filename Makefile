@@ -6,18 +6,18 @@ LIBFT= ./lib/libft/libft.a
 LIBMLX= ./minilibx-linux/libmlx.a
 
 SRCS= ./src/main.c \
-	  ./src/render/my_mlx_pixel_put.c \
 	  ./src/init/init_data.c \
 	  ./src/init/init_img.c \
 	  ./src/init/init_player.c \
 	  ./src/init/init_texture.c \
+	  ./src/init/init_wall.c \
 	  ./src/event/hook.c \
 	  ./src/event/update_position.c \
 	  ./src/event/movement.c \
+	  ./src/event/rotation.c \
 	  ./src/render/pixel_handlers.c \
 	  ./src/render/render_frame.c \
 	  ./src/render/draw_textured_wall.c \
-	  ./src/render/init_wall.c \
 	  ./src/raycasting/dda.c \
 	  ./src/raycasting/raycasting.c \
 	  ./lib/gnl/get_next_line.c \

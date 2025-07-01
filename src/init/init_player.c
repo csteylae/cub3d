@@ -74,7 +74,6 @@ t_player	init_player(t_mlx_data *data)
 
 	player.pos = get_player_pos(data);
 	player.dir = get_dir(data, player.pos);
-	player.fov = (66 * M_PI) / 180;
 	player.plane_len = 0.66;
 	player.plane = get_perpendicular_plane(player.dir, player.plane_len);
 	player.move_speed = 0.05;
