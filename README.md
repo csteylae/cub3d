@@ -7,12 +7,12 @@ This is a 42 school project that challenges students to create their first rayca
 
 A configuration file serves as the program's sole argument. This file contains information about texture paths, ceiling and floor colors, and the map layout. The configuration file must be parsed to verify that the map and data are valid before initializing the game.
 
-Graphic rendering is accomplished using MinilibX, a graphical library developed by 42 (an API built on X11 - check [here](https://x.org/wiki/)) designed for beginners in graphics programming. You can find the repository [here](https://github.com/42paris/minilibx-linux) and essential documentation [here](https://harm-smits.github.io/42docs/libs/minilibx). For additional MinilibX guidance, check out the excellent tutorials by Oceano on [YouTube](https://www.youtube.com/@onaecO).
+Graphic rendering is accomplished using MinilibX, a graphical library developed by 42 (an API built on X11 - check [X.org](https://x.org/wiki/)) designed for beginners in graphics programming. You can find the repository on [GitHub](https://github.com/42paris/minilibx-linux) and essential documentation on [42docs](https://harm-smits.github.io/42docs/libs/minilibx). For additional MinilibX guidance, check out the excellent tutorials by Oceano on [YouTube](https://www.youtube.com/@onaecO).
 
 ### Raycasting Implementation
-There are multiple ways to develop a raycasting engine. In this implementation, we follow the tutorial by Lode Vandevenne ([available here](https://lodev.org/cgtutor/raycasting.html))—an excellent C++ tutorial that we adapted step by step.
+There are multiple ways to develop a raycasting engine. In this implementation, we follow the tutorial by Lode Vandevenne ([Lode's Computer Graphics Tutorial](https://lodev.org/cgtutor/raycasting.html))—an excellent C++ tutorial that we adapted step by step.
 
-In this implementation, we work with vectors rather than Euclidean angles. (Check [here](https://www.mathsisfun.com/algebra/vectors.html) to refresh your understanding of vector arithmetic—it's quite simple but worth reviewing).
+In this implementation, we work with vectors rather than Euclidean angles. (Check [Math is Fun](https://www.mathsisfun.com/algebra/vectors.html) to refresh your understanding of vector arithmetic—it's quite simple but worth reviewing).
 
 We use 3 vectors:
 - **Player position**
