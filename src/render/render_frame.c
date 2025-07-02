@@ -23,10 +23,12 @@ void	draw_3d_wall(t_mlx_data *data)
 	{
 		ray = cast_ray(data, x);
 		wall = init_wall(data, ray);
+		//draw_wall(data, x, wall);
 		draw_textured_wall(data, x, wall);
 		x++;
 	}
 }
+
 
 int	render_frame(t_mlx_data *data)
 {

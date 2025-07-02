@@ -26,6 +26,12 @@ typedef struct s_int_vec
 	int	y;
 }	t_int_vec;
 
+typedef struct	s_range
+{
+	double min;
+	double max;
+}	t_range;
+
 typedef struct s_ray
 {
 	t_vector	dir;
@@ -61,8 +67,8 @@ typedef struct s_player
 typedef struct s_wall
 {
 	int		height;
-	int		begin;
-	int		end;
+	int		top;
+	int		bottom;
 	int		side;
 	double	hit;
 	int		tex_col;

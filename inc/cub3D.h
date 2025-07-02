@@ -95,6 +95,7 @@ t_vector	vec(double x, double y);
 t_vector	get_plane(t_vector dir, double plane_len);
 void		draw_line(t_mlx_data *data, t_line line, int color);
 int			get_pixel_color(t_img img, int pixel_x, int pixel_y);
+t_range		new_range(double min, double max);
 
 /*______________RACHEL______________*/
 /*________UTILS________*/

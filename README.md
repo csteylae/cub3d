@@ -24,17 +24,20 @@ We draw on a framebuffer that refreshes every frame.
 
 To render a 3D wall maze, we cast one ray per screen width pixel in different directions. These rays travel through the map until they hit a wall. We can then determine the distance from the player to the wall, and based on this distance, we draw the wall with appropriate height. This creates as many pixel columns on screen as there are pixels in width.
 
-##### 1. Calculate Ray Direction
+#### 1. Calculate Ray Direction
 We map the screen onto our plane vector using linear interpolation. We then calculate the ray direction based on the player's facing direction and the product of the plane vector with the interpolation result.
 
-##### 2. Perform DDA
+#### 2. Perform DDA
 The Digital Differential Analyzer is an optimized algorithm that helps us check at every grid boundary the ray traverses whether that grid contains a wall. With proper distance incrementation, we can efficiently check each time we cross a new grid cell on the x or y axis.
 
-##### 3. Get Wall Distance
+#### 3. Get Wall Distance
 Working with vectors allows us to avoid the "fisheye effect"—a well-known phenomenon in raycasting. This effect is avoided by using the perpendicular wall distance from the player position.
 
-##### 4. Draw the Textured Wall
+#### 4. Draw the Textured Wall
 The final step involves rendering the wall. For a textured wall, we need the exact point where the ray hits the wall—this gives us the texture column to work with. We then extract the color pixel from this texture pixel and draw it to our buffer.
+#### Reproducing perspective on the screen
+We assume our world is made of units that all make 1.0 tall size.
+
 
 ## Usage
 ```bash
