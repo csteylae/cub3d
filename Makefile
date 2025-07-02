@@ -31,12 +31,6 @@ SRCS= ./src/main.c \
 	  ./src/input_parsing/parsing/parse_map.c\
 	  ./src/input_parsing/parsing/check_map.c\
 	  ./src/input_parsing/utils/map_utils.c\
-#	  ./src/minimap/init_minimap.c \
-#	  ./src/minimap/draw_minimap.c \
-#	  ./src/minimap/draw_player.c \
-#	  ./src/minimap/render_2d.c \
-
-
 
 OBJS=$(SRCS:.c=.o)
 

@@ -12,18 +12,36 @@
 
 #include "../inc/cub3D.h"
 
+static void	free_texture(t_mlx_data *data, t_texture *texture)
+{
+	if (!texture)
+		return ;
+	if (texture->path)
+		free(texture->path);
+	if (texture->img.ptr)
+	{
+		mlx_destroy_image(data->mlx, texture->img.ptr);
+		texture->img.ptr = NULL;
+	}
+}
+
 int	close_cub3D(t_mlx_data *data)
 {
+	int	i;
+
+	i = 0;
+	while (data->map[i])
+	{
+		free(data->map[i]);
+		i++;
+	}
+	free(data->map);
+	free_texture(data, &data->texture[EAST]);
+	free_texture(data, &data->texture[WEST]);
+	free_texture(data, &data->texture[NORTH]);
+	free_texture(data, &data->texture[SOUTH]);
 	if (data->framebuffer.ptr)
 		mlx_destroy_image(data->mlx, data->framebuffer.ptr);
-	if (data->texture[EAST].img.ptr)
-		mlx_destroy_image(data->mlx, data->texture[EAST].img.ptr);
-	if (data->texture[WEST].img.ptr)
-		mlx_destroy_image(data->mlx, data->texture[WEST].img.ptr);
-	if (data->texture[SOUTH].img.ptr)
-		mlx_destroy_image(data->mlx, data->texture[SOUTH].img.ptr);
-	if (data->texture[NORTH].img.ptr)
-		mlx_destroy_image(data->mlx, data->texture[NORTH].img.ptr);
 	if (data->mlx && data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)
