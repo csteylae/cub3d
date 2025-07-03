@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:52:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 19:00:59 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/03 18:15:16 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ static t_vector	get_player_pos(t_mlx_data *data)
 	int			y;
 
 	y = 0;
+	printf("test\n\n");
 	while (data->map[y])
 	{
+	printf("test1\n\n");
 		x = 0;
 		while (data->map[y][x])
 		{
@@ -76,7 +78,7 @@ t_player	init_player(t_mlx_data *data)
 	player.dir = get_dir(data, player.pos);
 	player.plane_len = 0.66;
 	player.plane = get_perpendicular_plane(player.dir, player.plane_len);
-	player.move_speed = 0.05;
-	player.rot_speed = 0.05;
+	player.move_speed = 0.07;
+	player.rot_speed = 0.07;
 	return (player);
 }

@@ -1,0 +1,19 @@
+NO ./textures/wolfenstein_tex/mossy.xpm
+SO ./textures/wolfenstein_tex/pillar.xpm
+
+WE ./textures/wolfenstein_tex/purplestone.xpm
+EA ./textures/wolfenstein_tex/redbrick.xpm
+
+F  150, 75 , 0
+C  30,144,255
+
+
+
+        111111111111
+        100000000001
+        100001000001
+        100000000001
+        100000000001
+        1000000000N1
+        111111111111
+

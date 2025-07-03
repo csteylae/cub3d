@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:03:31 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 18:55:55 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:28:33 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@
 # include "../lib/gnl/get_next_line.h"
 # include "../minilibx-linux/mlx.h"
 
-# define EPSILON 1e-10 //def "close enough to 0" for floating point comparison
+# define EPSILON 1e-10
 # define SAFE_LARGE_VALUE 1e30
 
 # define SCREEN_WIDTH 1024
 # define SCREEN_HEIGHT 768
-# define TILE_SIZE 64
 
 # define EAST 3
 # define WEST 2
@@ -51,6 +50,9 @@ t_player	init_player(t_mlx_data *data);
 void		init_texture(t_mlx_data *data);
 t_img		init_img(void);
 void		init_framebuffer(t_mlx_data *data);
+int			get_wall_height(double perp_wall_dist);
+int			get_wall_top(int wall_height);
+int			get_wall_bottom(int wall_height);
 
 /*_______EVENT_____________*/
 int			close_cub3D(t_mlx_data *data);
@@ -61,20 +63,16 @@ int			key_release(int keysym, t_mlx_data *data);
 void		my_pixel_put(t_img *img, int x, int y, int color);
 void		ft_clear_image(t_mlx_data *data);
 int			render_frame(t_mlx_data *data);
-void		draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall);
+void		draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall, t_ray ray);
 t_wall		init_wall(t_mlx_data *data, t_ray ray);
 void		draw_3d_wall(t_mlx_data *data);
-
-/*_______MINIMAP___________*/
-void		init_minimap(t_mlx_data *data);
-void		draw_map(t_mlx_data *data);
-bool		is_inside_image(t_mlx_data *data, int x, int y);
-void		draw_player(t_mlx_data *data);
+int			get_texture_column(t_mlx_data *data, t_wall wall, t_ray ray);
+double		get_texel_ratio(int texture_size, int wall_height);
+double		get_starting_row_texture(double txl_ratio, t_wall wall);
 
 /*______MOVEMENT__________*/
 void		update_player_position(t_mlx_data *data, t_player *player);
 t_vector	get_perpendicular_plane(t_vector dir, double plane_len);
-//void	move_player(t_mlx_data	*data, t_vector move_dir);
 void	move_forward(t_mlx_data *data, t_vector dir);
 void	move_backward(t_mlx_data *data, t_vector dir);
 void	strafe_right(t_mlx_data *data, t_vector dir);

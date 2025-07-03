@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:12:14 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 15:52:52 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/03 18:17:11 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,11 @@ int main(int argc, char **argv)
 	len = ft_strlen(argv[1]);
 	if ((ft_strncmp(argv[1] + len - 4, ".cub", 4)) != 0)
 		ft_error("Error\nMap format is invalid!\n");//Vérifie format map.
+													//
 	init_game_struct(&game);//Initialise tous les éléments de ma structure principale.
 	parse(&game, argv[1]);//Parsing du fichier .cub.
 	map_is_valid(&game);//Validité de ma map.
+	//init_game_struct(&game);
 	data = init_data(game);
 	mlx_hook(data.win, 17, 0, close_cub3D, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, key_press, &data);
@@ -80,3 +82,30 @@ int main(int argc, char **argv)
 	mlx_loop_hook(data.mlx, render_frame, &data);
 	mlx_loop(data.mlx);
 }
+/*
+int main(int argc, char **argv)
+{
+//	int		len;
+	t_data	game;
+	t_mlx_data	data;
+
+	(void)argv;
+	(void)argc;
+	if (argc != 2)
+		ft_error("Error\nNot the right amount of arguments!\n");
+	len = ft_strlen(argv[1]);
+	if ((ft_strncmp(argv[1] + len - 4, ".cub", 4)) != 0)
+		ft_error("Error\nMap format is invalid!\n");//Vérifie format map.
+	init_game_struct(&game);//Initialise tous les éléments de ma structure principale.
+	parse(&game, argv[1]);//Parsing du fichier .cub.
+	map_is_valid(&game);//Validité de ma map.
+						//
+init_game_struct(&game);
+	data = init_data(game);
+	mlx_hook(data.win, 17, 0, close_cub3D, &data);
+	mlx_hook(data.win, KeyPress, KeyPressMask, key_press, &data);
+	mlx_hook(data.win, KeyRelease, KeyReleaseMask, key_release, &data);
+	mlx_loop_hook(data.mlx, render_frame, &data);
+	mlx_loop(data.mlx);
+}
+*/

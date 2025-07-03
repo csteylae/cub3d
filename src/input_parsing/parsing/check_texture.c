@@ -32,8 +32,8 @@ int	check_textures_path(char *path)//Vérifie chemin vers la texture et format.
 
 	if ((fd = open(path, O_RDONLY)) == -1)
 	{
-		ft_error("Error\nOpening texture file failure!TEST\n");
-		close (fd);
+		//leak here
+		ft_error("Error\nOpening texture file failure!\n");
 	}
 	len = ft_strlen(path);
 	if ((ft_strncmp(path + len - 4, ".xpm", 4)) != 0)

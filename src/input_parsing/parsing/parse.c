@@ -62,9 +62,6 @@ void	parse(t_data *game, char *file)
 	check_texture_exist(game);
 	if (!parse_map(game, &lines[i]))
 		ft_free_error("Error\nMap parsing has failed!\n", game);
-	//i = 0;
-	//while (game->map[i])
-	//	printf("%s\n", game->map[i++]);
 	i = 0;
 	while (lines[i])
 		free(lines[i++]);

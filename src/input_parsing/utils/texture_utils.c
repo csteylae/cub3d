@@ -79,7 +79,7 @@ int check_north(t_data *game, char *line)
 	if (ft_strncmp(line, "NO ", 3) == 0)
 	{
 		if (game->texture[0] != NULL)
-			ft_error("Error\nDuplicate NO texture!\n");
+			ft_free_error("Error\nDuplicate NO texture!\n", game);
 		path = ft_strtrim(line + 3, " \n");//strtrim va supprimer les espaces et \n. line + 3 pour pointer sur le "./...".
 		if (!path || path[0] == '\0')
 		{
