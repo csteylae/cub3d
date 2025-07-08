@@ -1,8 +1,8 @@
-NO ./textures/factorylargerocksplain.xpm
-NO ./textures/factorylargerocksplain.xpm
-SO ./textures/bookshelf_1_.xpm
-WE ./textures/invalid_xpm.xpm 
-EA ./textures/bark.xpmmmm
+NO ./textures/divers/factorylargerocksplain.xpm
+NO ./textures/divers/factorylargerocksplain.xpm
+SO ./textures/divers/bookshelf_1_.xpm
+WE ./textures/divers/invalid_xpm.xpm 
+EA ./textures/divers/bark.xpmmmm
 
 F 50,50,50
 

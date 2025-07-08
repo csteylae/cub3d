@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:01:56 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/03 16:28:34 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:31:22 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	draw_ground(t_mlx_data *data, int screen_x, int y_begin, int y_end)
 		y++;
 	}
 }
-
 
 void	draw_textured_wall(t_mlx_data *data, int pxl_x, t_wall wall, t_ray ray)
 {

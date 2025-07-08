@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:39:37 by csteylae          #+#    #+#             */
-/*   Updated: 2023/04/24 17:24:19 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:26:49 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strchr(const char *s, int c)
 	while (s[i] != (char)c && s[i] != '\0')
 		i++;
 	if ((char)c == s[i])
-	{	
+	{
 		s = s + i;
 		return ((char *)s);
 	}

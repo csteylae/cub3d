@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:53:00 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 16:14:08 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:29:33 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ typedef struct s_int_vec
 	int	y;
 }	t_int_vec;
 
-typedef struct	s_range
+typedef struct s_range
 {
-	double min;
-	double max;
+	double	min;
+	double	max;
 }	t_range;
 
 typedef struct s_ray

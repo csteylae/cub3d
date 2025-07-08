@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:52:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/03 18:15:16 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:25:38 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ static t_vector	get_player_pos(t_mlx_data *data)
 	int			y;
 
 	y = 0;
-	printf("test\n\n");
 	while (data->map[y])
 	{
-	printf("test1\n\n");
 		x = 0;
 		while (data->map[y][x])
 		{

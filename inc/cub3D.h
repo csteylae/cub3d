@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:03:31 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/03 16:28:33 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:29:07 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ t_range		new_range(double min, double max);
 /*________UTILS________*/
 void	ft_error(char *str);
 void	ft_free_error(char *str, t_data *game);
-int 	check_north(t_data *game, char *line);
-int 	check_south(t_data *game, char *line);
-int 	check_west(t_data *game, char *line);
+int		check_north(t_data *game, char *line);
+int		check_south(t_data *game, char *line);
+int	check_west(t_data *game, char *line);
 int		check_east(t_data *game, char *line);
 char	**copy_map(char **src_map);
 
