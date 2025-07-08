@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:53:00 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/08 11:29:33 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/08 22:25:20 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,36 @@ typedef struct s_texture
 	t_img	img;
 }	t_texture;
 
+typedef struct s_line
+{
+	t_int_vec	start;
+	t_int_vec	end;
+}	t_line;
+
+/*______________RACHEL______________*/
+typedef struct s_data
+{
+	int		fd;
+	int		cnt;
+	char	**entire_fd;
+	char	*trimmed;
+	char	*texture[4];
+	char	*txt_path;
+	int		check_floor_color;
+	int		check_ceiling_color;
+	int		floor_color;
+	int		ceiling_color;
+	int		comma_cnt;
+	char	**rgb;
+	char	**cleaned;
+	int		r;
+	int		g;
+	int		b;
+	int		cnt_map_lines;
+	char	**map;
+	char	**map_copy;
+}	t_data;
+
 typedef struct s_mlx_data
 {
 	void				*mlx;
@@ -102,25 +132,7 @@ typedef struct s_mlx_data
 	t_key				key;
 	int					ceiling;
 	int					floor;
+	t_data				*game;
 }	t_mlx_data;
-
-typedef struct s_line
-{
-	t_int_vec	start;
-	t_int_vec	end;
-}	t_line;
-
-/*______________RACHEL______________*/
-typedef struct s_data
-{
-	char	**map;
-	char	*texture[4];
-	int		check_floor_color;
-	int		check_ceiling_color;
-	int		nb_map_lines;
-	char	**map_copy;
-	int		floor_color;
-	int		ceiling_color;
-}	t_data;
 
 #endif

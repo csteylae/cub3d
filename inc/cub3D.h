@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:47:21 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/08 12:47:25 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/08 22:37:59 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define FOREST_GREEN 0x228B22
 
 /*_______INIT______________*/
-t_mlx_data	init_data(t_data game);
+t_mlx_data	init_data(t_data *game);
 t_player	init_player(t_mlx_data *data);
 void		init_texture(t_mlx_data *data);
 t_img		init_img(void);
@@ -95,29 +95,35 @@ int			get_pixel_color(t_img img, int pixel_x, int pixel_y);
 t_range		new_range(double min, double max);
 
 /*______________RACHEL______________*/
-/*________UTILS________*/
-void	ft_error(char *str);
-void	ft_free_error(char *str, t_data *game);
-int		check_north(t_data *game, char *line);
-int		check_south(t_data *game, char *line);
-int	check_west(t_data *game, char *line);
-int		check_east(t_data *game, char *line);
-char	**copy_map(char **src_map);
+/*_____ERRORS_____*/
+void		ft_error(char *str);
+void		free_entire_fd(t_data *game);
+void		free_str(char **str);
+void		free_all(t_data *game);
+void		free_all_error(char *str, t_data *game);
+void		free_game_data(t_data *game);
+/*_____INIT_____*/
+void		init_struct(t_data *game);
 
-/*________INIT________*/
-void    init_game_struct(t_data *game);
+/*_____PARSING_____*/
+void		parse(t_data *game, char *file);
+void		open_file(t_data *game, char *file);
+int			is_valid_element(char *line, t_data *game);
 
-/*________PARSE________*/
-void    parse(t_data *game, char *file);
-int		check_texture(t_data *game, char *line);
-int		check_textures_path(char *path);
-void	check_texture_exist(t_data *game);
-void	textures_own_path(t_data *game);
-int		check_color(t_data *game, char *line);
-int		parse_map(t_data *game, char **lines);
-int		maps_content(char *line);
+int			check_texture(t_data *game, char *line);
+void		check_textures_path(char *path, t_data *game);
 
-/*________CHECK_MAP________*/
-void    map_is_valid(t_data *game);
+void		check_color(t_data *game, char *line);
+void		validate_rgb_components(t_data *game, int i, int j);
+int			create_trgb(int t, t_data *game);
+
+void		parse_map(t_data *game, int map_start_index);
+char		**copy_map(char **src_map, t_data *game);
+int			flood_fill(t_data *game, int y, int x);
+void		map_borders(t_data *game);
+void		check_invalid_zero(t_data *game);
+
+/*_____MAP_____*/
+void		map_is_valid(t_data *game);
 
 #endif

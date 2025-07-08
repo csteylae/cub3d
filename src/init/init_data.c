@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:12:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/08 12:38:42 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/08 15:12:47 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,17 @@ static t_mlx_data	init_ptr(void)
 	return (data);
 }
 
-static void	get_cub_config(t_mlx_data *data, t_data game)
+static void	get_cub_config(t_mlx_data *data, t_data *game)
 {
-	data->map = game.map;
-	data->texture[NORTH].path = game.texture[NORTH];
-	data->texture[SOUTH].path = game.texture[SOUTH];
-	data->texture[WEST].path = game.texture[WEST];
-	data->texture[EAST].path = game.texture[EAST];
-	data->floor = game.floor_color;
-	data->ceiling = game.ceiling_color;
+	data->map = game->map;
+	data->texture[NORTH].path = game->texture[NORTH];
+	printf("%s\n\n", data->texture[NORTH].path);
+	data->texture[SOUTH].path = game->texture[SOUTH];
+	data->texture[WEST].path = game->texture[WEST];
+	data->texture[EAST].path = game->texture[EAST];
+	data->floor = game->floor_color;
+	data->ceiling = game->ceiling_color;
+	data->game = game;
 }
 
 t_vector	vec(double x, double y)
@@ -60,7 +62,7 @@ t_vector	vec(double x, double y)
 	return (vec);
 }
 
-t_mlx_data	init_data(t_data game)
+t_mlx_data	init_data(t_data *game)
 {
 	t_mlx_data	data;
 

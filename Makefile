@@ -24,15 +24,18 @@ SRCS= ./src/main.c \
 	  ./src/raycasting/raycasting.c \
 	  ./lib/gnl/get_next_line.c \
 	  ./lib/gnl/get_next_line_utils.c \
-	  ./src/input_parsing/utils/utils_error.c\
-	  ./src/input_parsing/init/init_game_struct.c\
-	  ./src/input_parsing/parsing/parse.c\
-	  ./src/input_parsing/parsing/check_texture.c\
-	  ./src/input_parsing/utils/texture_utils.c\
-	  ./src/input_parsing/parsing/check_color.c\
-	  ./src/input_parsing/parsing/parse_map.c\
-	  ./src/input_parsing/parsing/check_map.c\
-	  ./src/input_parsing/utils/map_utils.c\
+	  ./src/input_parsing/errors/error.c \
+	  ./src/input_parsing/errors/error_2.c \
+	  ./src/input_parsing/init_struct.c \
+	  ./src/input_parsing/parsing/parse/parse.c \
+	  ./src/input_parsing/parsing/parse/parse_2.c \
+	  ./src/input_parsing/parsing/textures/textures.c \
+	  ./src/input_parsing/parsing/textures/textures_2.c \
+	  ./src/input_parsing/parsing/colors/colors.c \
+	  ./src/input_parsing/parsing/colors/colors_2.c \
+	  ./src/input_parsing/parsing/map/map.c \
+	  ./src/input_parsing/parsing/map/map_2.c \
+	  ./src/input_parsing/parsing/map/map_3.c \
 
 OBJS=$(SRCS:.c=.o)
 

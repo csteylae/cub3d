@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:12:14 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/08 11:30:28 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/08 21:57:12 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	close_cub3D(t_mlx_data *data)
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
+	free(data->game);
 	exit(EXIT_SUCCESS);
 }
 
@@ -61,22 +62,28 @@ void	put_error(char *error_msg, t_mlx_data *data)
 
 int main(int argc, char **argv)
 {
-	int		len;
-	t_data	game;
+	int			len;
+	t_data		*game;
 	t_mlx_data	data;
 
 	if (argc != 2)
 		ft_error("Error\nNot the right amount of arguments!\n");
 	len = ft_strlen(argv[1]);
 	if ((ft_strncmp(argv[1] + len - 4, ".cub", 4)) != 0)
-		ft_error("Error\nMap format is invalid!\n");//Vérifie format map.
-	init_game_struct(&game);
-	parse(&game, argv[1]);
-	map_is_valid(&game);
+		ft_error("Error\nInvalid map format!\n");
+	game = malloc(sizeof(t_data));
+	if (!game)
+		ft_error("Error\nFailed allocation memory!\n");
+	init_struct(game);
+	parse(game, argv[1]);
+	map_is_valid(game);
 	data = init_data(game);
 	mlx_hook(data.win, 17, 0, close_cub3D, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, key_press, &data);
 	mlx_hook(data.win, KeyRelease, KeyReleaseMask, key_release, &data);
 	mlx_loop_hook(data.mlx, render_frame, &data);
 	mlx_loop(data.mlx);
+	free_all(game);
+
+	return (0);
 }
