@@ -1,7 +1,6 @@
 NO ./textures/bb/fibi_64x64.xpm
 SO ./textures/bb/fi_linus_64.xpm
 WE ./textures/bb/mimikai.xpm
-dfs
 EA ./textures/bb/mimidown.xpm
 
 F 1, 90, 3
