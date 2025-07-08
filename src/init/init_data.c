@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:12:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/08 11:25:08 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:38:42 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ static t_mlx_data	init_ptr(void)
 static void	get_cub_config(t_mlx_data *data, t_data game)
 {
 	data->map = game.map;
-	if (data->map)
-		printf("no map sniffff\n");
 	data->texture[NORTH].path = game.texture[NORTH];
 	data->texture[SOUTH].path = game.texture[SOUTH];
 	data->texture[WEST].path = game.texture[WEST];
