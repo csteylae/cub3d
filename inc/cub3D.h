@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/05 15:03:31 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/08 11:29:07 by csteylae         ###   ########.fr       */
+/*   Created: 2025/07/08 12:47:21 by csteylae          #+#    #+#             */
+/*   Updated: 2025/07/08 12:47:25 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			key_release(int keysym, t_mlx_data *data);
 void		my_pixel_put(t_img *img, int x, int y, int color);
 void		ft_clear_image(t_mlx_data *data);
 int			render_frame(t_mlx_data *data);
-void		draw_textured_wall(t_mlx_data *data, int screen_x, t_wall wall, t_ray ray);
+void		draw_textured_wall(t_mlx_data *data, int x, t_wall wall, t_ray ray);
 t_wall		init_wall(t_mlx_data *data, t_ray ray);
 void		draw_3d_wall(t_mlx_data *data);
 int			get_texture_column(t_mlx_data *data, t_wall wall, t_ray ray);
@@ -72,13 +72,12 @@ double		get_starting_row_texture(double txl_ratio, t_wall wall);
 
 /*______MOVEMENT__________*/
 void		update_player_position(t_mlx_data *data, t_player *player);
-t_vector	get_perpendicular_plane(t_vector dir, double plane_len);
-void	move_forward(t_mlx_data *data, t_vector dir);
-void	move_backward(t_mlx_data *data, t_vector dir);
-void	strafe_right(t_mlx_data *data, t_vector dir);
-void	strafe_left(t_mlx_data *data, t_vector dir);
-void	rotate(t_player *player, double rot_angle);
-bool	is_wall_collision(t_mlx_data *data, t_vector pos);
+void		move_forward(t_mlx_data *data, t_vector dir);
+void		move_backward(t_mlx_data *data, t_vector dir);
+void		strafe_right(t_mlx_data *data, t_vector dir);
+void		strafe_left(t_mlx_data *data, t_vector dir);
+void		rotate(t_player *player, double rot_angle);
+bool		is_wall_collision(t_mlx_data *data, t_vector pos);
 
 /*______RAYCASTING_______*/
 void		initialize_dda(t_player *player, t_ray *ray);
