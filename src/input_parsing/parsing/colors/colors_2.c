@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:53:02 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 17:18:23 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:16:58 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ int	create_trgb(int t, t_data *game)
 
 void	validate_rgb_components(char *str, t_data *game, int i, int j)
 {
-	game->cleaned[0] = NULL;
-	game->cleaned[1] = NULL;
-	game->cleaned[2] = NULL;
 	while (++i < 3)
 	{
 		game->cleaned[i] = ft_strtrim(game->rgb[i], " \t");

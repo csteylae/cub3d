@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:54:57 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 17:20:22 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:19:22 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 static void	extract_rgb_values(t_data *game, char *str, int i)
 {
-	game->cleaned = malloc(sizeof(char *) * 3);
-	if (!game->cleaned)
-		free_str_all(str, game);
 	game->comma_cnt = 0;
 	while (str[++i])
 	{
@@ -50,9 +47,11 @@ static int	parse_color(char *str, t_data *game, int i, int j)
 		free_str_all(str, game);
 	i = 0;
 	while (i < 3)
-		free(game->cleaned[i++]);
-	free(game->cleaned);
-	game->cleaned = NULL;
+	{
+		free(game->cleaned[i]);
+		game->cleaned[i] = NULL;
+		i++;
+	}
 	free_str(game->rgb);
 	game->rgb = NULL;
 	return (create_trgb(0, game));

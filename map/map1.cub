@@ -1,7 +1,7 @@
 NO ./textures/wolfenstein_tex/greystone.xpm
 SO ./textures/wolfenstein_tex/wood.xpm
 WE ./textures/wolfenstein_tex/redbrick.xpm
-EA ./textures/wolfenstein_tex/mossy.xpm
+EA ./textures/bad.xpm
 
 F 50,50,50
 C 200,200,255

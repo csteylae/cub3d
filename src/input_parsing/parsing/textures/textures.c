@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:03:39 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 17:08:32 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:46:48 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ static int	check_north(t_data *game, char *line)
 
 int	check_texture(t_data *game, char *line)
 {
+	if (ft_strlen(line) < 3)
+		free_all_error("Error\nInvalid file3!\n", game);
 	if (check_north(game, line))
 		return (1);
 	if (check_south(game, line))

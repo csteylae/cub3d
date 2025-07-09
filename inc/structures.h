@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:53:00 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/09 15:55:43 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:03:31 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ typedef struct s_data
 	int		ceiling_color;
 	int		comma_cnt;
 	char	**rgb;
-	char	**cleaned;
+	char	*cleaned[3];
 	int		r;
 	int		g;
 	int		b;

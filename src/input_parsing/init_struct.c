@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:08:27 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 15:41:58 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:01:33 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ void	init_struct(t_data *game)
 	game->g = 0;
 	game->b = 0;
 	game->rgb = NULL;
-	game->cleaned = NULL;
+	game->cleaned[0] = NULL;
+	game->cleaned[1] = NULL;
+	game->cleaned[2] = NULL;
 	game->cnt_map_lines = 0;
 	game->map = NULL;
 	game->map_copy = NULL;
+	game->ceiling_color = 0;
+	game->floor_color = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 13:49:58 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 17:12:13 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:09:53 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,15 @@ static void	free_game_data_2(t_data *game)
 {
 	int	i;
 
-	if (game->cleaned)
+	i = 0;
+	while (i < 3)
 	{
-		i = 0;
-		while (i < 3)
+		if (game->cleaned[i])
 		{
-			if (game->cleaned[i])
-				free(game->cleaned[i]);
-			i++;
+			free(game->cleaned[i]);
+			game->cleaned[i] = NULL;
 		}
-		free(game->cleaned);
-		game->cleaned = NULL;
+		i++;
 	}
 	if (game->rgb)
 		free_str(game->rgb);
