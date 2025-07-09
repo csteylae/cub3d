@@ -28,7 +28,6 @@ SRCS= ./src/main.c \
 	  ./src/input_parsing/errors/error_2.c \
 	  ./src/input_parsing/init_struct.c \
 	  ./src/input_parsing/parsing/parse/parse.c \
-	  ./src/input_parsing/parsing/parse/parse_2.c \
 	  ./src/input_parsing/parsing/textures/textures.c \
 	  ./src/input_parsing/parsing/textures/textures_2.c \
 	  ./src/input_parsing/parsing/colors/colors.c \

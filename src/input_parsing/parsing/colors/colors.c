@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:54:57 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/08 22:38:53 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 13:28:07 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,13 @@ static void	f_color(t_data *game, char *line)
 void	check_color(t_data *game, char *line)
 {
 	if (ft_strncmp(line, "F", 1) == 0)
+	{
+		game->cnt += 5;
 		f_color(game, line);
+	}
 	else if (ft_strncmp(line, "C", 1) == 0)
+	{
+		game->cnt += 6;
 		c_color(game, line);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:47:21 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/09 11:38:08 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/09 14:42:05 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ void		init_struct(t_data *game);
 /*_____PARSING_____*/
 void		parse(t_data *game, char *file);
 void		open_file(t_data *game, char *file);
-int			is_valid_element(char *line, t_data *game);
 
 int			check_texture(t_data *game, char *line);
 void		check_textures_path(char *path, t_data *game);
