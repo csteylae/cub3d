@@ -17,7 +17,10 @@ static void	free_texture(t_mlx_data *data, t_texture *texture)
 	if (!texture)
 		return ;
 	if (texture->path)
+	{
 		free(texture->path);
+		texture->path = NULL;
+	}
 	if (texture->img.ptr)
 	{
 		mlx_destroy_image(data->mlx, texture->img.ptr);
@@ -36,6 +39,7 @@ int	close_cub3D(t_mlx_data *data)
 		i++;
 	}
 	free(data->map);
+	data->map = NULL;
 	free_texture(data, &data->texture[EAST]);
 	free_texture(data, &data->texture[WEST]);
 	free_texture(data, &data->texture[NORTH]);
@@ -83,7 +87,6 @@ int main(int argc, char **argv)
 	mlx_hook(data.win, KeyRelease, KeyReleaseMask, key_release, &data);
 	mlx_loop_hook(data.mlx, render_frame, &data);
 	mlx_loop(data.mlx);
-	free_all(game);
-
+//	free_all(game);
 	return (0);
 }
