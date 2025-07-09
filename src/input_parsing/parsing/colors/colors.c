@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:54:57 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 16:19:34 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:04:35 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	extract_rgb_values(t_data *game, char *str, int i)
 	if (game->comma_cnt != 2)
 	{
 		free(str);	
+		str = NULL;
 		free_all_error("Error\nInvalid file2!\n", game);
 	}
 	game->rgb = ft_split(str, ',');

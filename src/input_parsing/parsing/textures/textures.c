@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:03:39 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 15:37:57 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:08:32 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static int	check_east(t_data *game, char *line)
 		if (!game->texture[3])
 			free_all_error("Error\nInvalid file!\n", game);
 		free(game->txt_path);
+		game->txt_path = NULL;
 		return (1);
 	}
 	return (0);
