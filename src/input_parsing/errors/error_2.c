@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 13:49:58 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 15:55:48 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 16:36:47 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,12 @@ void	free_game_data(t_data *game)
 		free(game->trimmed);
 		game->trimmed = NULL;	
 	}
-	//if (game->value)
-	//{
-	//	free(game->value);
-	//	game->value = NULL;	
-	//}
+	
+	if (game->txt_path)
+	{
+		free(game->txt_path);
+		game->txt_path = NULL;	
+	}
 	i = 0;
 	while (i < 4)
 	{
