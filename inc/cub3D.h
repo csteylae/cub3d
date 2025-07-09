@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:47:21 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/09 14:42:05 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:11:29 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@
 
 # define SCREEN_WIDTH 1024
 # define SCREEN_HEIGHT 768
+
+# define EA (1 << 0)
+# define WE (1 << 1)
+# define SO (1 << 2)
+# define NO (1 << 3)
+# define C (1 << 4)
+# define F (1 << 5)
 
 # define EAST 3
 # define WEST 2

@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:54:57 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 13:28:07 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:37:58 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,16 @@ void	check_color(t_data *game, char *line)
 {
 	if (ft_strncmp(line, "F", 1) == 0)
 	{
-		game->cnt += 5;
+		if (game->cnt & F)
+			free_all_error("Error\nDuplicate element!\n", game);
+		game->cnt = game->cnt | F;
 		f_color(game, line);
 	}
 	else if (ft_strncmp(line, "C", 1) == 0)
 	{
-		game->cnt += 6;
+		if (game->cnt & C)
+			free_all_error("Error\nDuplicate element\n", game);
+		game->cnt = game->cnt | C;
 		c_color(game, line);
 	}
 }

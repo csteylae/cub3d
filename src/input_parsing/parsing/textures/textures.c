@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:03:39 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 13:27:15 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:37:57 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ static int	check_east(t_data *game, char *line)
 {
 	if (ft_strncmp(line, "EA", 2) == 0)
 	{
-		game->cnt += 4;
+		if (game->cnt & EA)
+			free_all_error("Error\nDuplicate element!\n", game);
+		game->cnt = game->cnt | EA;
+		if (game->texture[3] != NULL)
+			free_all_error("Error\nInvalid file!\n", game);
 		if (game->texture[3] != NULL)
 			free_all_error("Error\nInvalid file!\n", game);
 		game->txt_path = ft_strtrim(line + 3, " \n");
@@ -36,7 +40,9 @@ static int	check_west(t_data *game, char *line)
 {
 	if (ft_strncmp(line, "WE", 2) == 0)
 	{
-		game->cnt += 3;
+		if (game->cnt & WE)
+			free_all_error("Error\nDuplicate element!\n", game);
+		game->cnt = game->cnt | WE;
 		if (game->texture[2] != NULL)
 			free_all_error("Error\nInvalid file!\n", game);
 		game->txt_path = ft_strtrim(line + 3, " \n");
@@ -56,7 +62,9 @@ static int	check_south(t_data *game, char *line)
 {
 	if (ft_strncmp(line, "SO", 2) == 0)
 	{
-		game->cnt += 2;
+		if (game->cnt & SO)
+			free_all_error("Error\nDuplicate element!\n", game);
+		game->cnt = game->cnt | SO;
 		if (game->texture[1] != NULL)
 			free_all_error("Error\nInvalid file!\n", game);
 		game->txt_path = ft_strtrim(line + 3, " \n");
@@ -76,7 +84,9 @@ static int	check_north(t_data *game, char *line)
 {
 	if (ft_strncmp(line, "NO", 2) == 0)
 	{
-		game->cnt += 1;
+		if (game->cnt & NO)
+			free_all_error("Error\nDuplicate element!\n", game);
+		game->cnt = game->cnt | NO;
 		if (game->texture[0] != NULL)
 			free_all_error("Error\nInvalid file1!\n", game);
 		game->txt_path = ft_strtrim(line + 3, " \n");

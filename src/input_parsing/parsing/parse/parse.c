@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:05:15 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 14:43:20 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:52:44 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,15 @@ void	parse(t_data *game, char *file)
 {
 	int	i;
 	int	map_start_index;
+	int	expected;
 
+	expected = NO | SO | EA | WE | F | C;
 	game->entire_fd = read_lines(game, file);
 	i = -1;
 	map_start_index = -1;
 	while (game->entire_fd[++i])
 	{
-		if (game->cnt == 21)
+		if (game->cnt == expected)
 			break ;
 		game->trimmed = ft_strtrim(game->entire_fd[i], " \t");
 		parse_2(game);
