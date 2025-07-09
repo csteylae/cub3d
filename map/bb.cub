@@ -3,7 +3,7 @@ SO ./textures/bb/fi_linus_64.xpm
 WE ./textures/bb/mimikai.xpm
 EA ./textures/bb/mimidown.xpm
 
-F -1, 90, 3
+F 1, 90, 3
 C 0,0,120
 
 	111111111111111111111111111					
