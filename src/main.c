@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:12:14 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/08 21:57:12 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:40:05 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	free_texture(t_mlx_data *data, t_texture *texture)
 	}
 }
 
-int	close_cub3D(t_mlx_data *data)
+int	close_cub(t_mlx_data *data)
 {
 	int	i;
 
@@ -61,10 +61,10 @@ void	put_error(char *error_msg, t_mlx_data *data)
 {
 	if (error_msg)
 		printf("%s\n\n", error_msg);
-	close_cub3D(data);
+	close_cub(data);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int			len;
 	t_data		*game;
@@ -82,11 +82,10 @@ int main(int argc, char **argv)
 	parse(game, argv[1]);
 	map_is_valid(game);
 	data = init_data(game);
-	mlx_hook(data.win, 17, 0, close_cub3D, &data);
+	mlx_hook(data.win, 17, 0, close_cub, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, key_press, &data);
 	mlx_hook(data.win, KeyRelease, KeyReleaseMask, key_release, &data);
 	mlx_loop_hook(data.mlx, render_frame, &data);
 	mlx_loop(data.mlx);
-//	free_all(game);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:47:21 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/08 22:37:59 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:38:08 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int			get_wall_top(int wall_height);
 int			get_wall_bottom(int wall_height);
 
 /*_______EVENT_____________*/
-int			close_cub3D(t_mlx_data *data);
+int			close_cub(t_mlx_data *data);
 int			key_press(int keysym, t_mlx_data *data);
 int			key_release(int keysym, t_mlx_data *data);
 

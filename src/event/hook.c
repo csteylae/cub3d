@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:25:29 by csteylae          #+#    #+#             */
-/*   Updated: 2025/05/05 19:19:41 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:38:58 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	key_release(int keysym, t_mlx_data *data)
 int	key_press(int keysym, t_mlx_data *data)
 {
 	if (keysym == XK_Escape)
-		close_cub3D(data);
+		close_cub(data);
 	if (keysym == XK_w)
 		data->key.w = 1;
 	if (keysym == XK_a)
