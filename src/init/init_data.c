@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:12:46 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/08 15:12:47 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:11:25 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void	get_cub_config(t_mlx_data *data, t_data *game)
 {
 	data->map = game->map;
 	data->texture[NORTH].path = game->texture[NORTH];
-	printf("%s\n\n", data->texture[NORTH].path);
 	data->texture[SOUTH].path = game->texture[SOUTH];
 	data->texture[WEST].path = game->texture[WEST];
 	data->texture[EAST].path = game->texture[EAST];
