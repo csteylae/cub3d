@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:47:21 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/09 16:43:25 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:18:49 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void		free_str(char **str);
 void		free_all(t_data *game);
 void		free_all_error(char *str, t_data *game);
 void		free_game_data(t_data *game);
+void	free_str_all(char *str, t_data *game);
 /*_____INIT_____*/
 void		init_struct(t_data *game);
 

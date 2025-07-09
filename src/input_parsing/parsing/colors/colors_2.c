@@ -6,11 +6,18 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:53:02 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 16:09:37 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:18:23 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/cub3D.h"
+
+void	free_str_all(char *str, t_data *game)
+{
+	free(str);
+	str = NULL;
+	free_all_error("Error\nInvalid file!\n", game);
+}
 
 int	create_trgb(int t, t_data *game)
 {
@@ -35,7 +42,7 @@ void	validate_rgb_components(char *str, t_data *game, int i, int j)
 		{
 			if (!ft_isdigit(game->cleaned[i][j]))
 			{
-				free(str);	
+				free(str);
 				free_all_error("Error\nInvalid file!\n", game);
 			}
 		}
