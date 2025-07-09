@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:47:21 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/09 15:11:29 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/09 16:23:20 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int			check_texture(t_data *game, char *line);
 void		check_textures_path(char *path, t_data *game);
 
 void		check_color(t_data *game, char *line);
-void		validate_rgb_components(t_data *game, int i, int j);
+void		validate_rgb_components(char *str, t_data *game, int i, int j);
 int			create_trgb(int t, t_data *game);
 
 void		parse_map(t_data *game, int map_start_index);
