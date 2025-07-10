@@ -55,10 +55,8 @@ void	check_map_boundary(t_data *game)
 	if (!copy)
 		free_all_error("Error\nCannot malloc map copy!\n", game);
 	exterior_flood_fill(copy, 0, 0, &is_valid);
-	if (!is_valid)
-	{
-		free_padded_map(copy, get_map_height(copy));
-		free_all_error("Error\nMap isnt closed :o\n", game);
-	}
 	free_padded_map(copy, get_map_height(copy));
+	if (!is_valid)
+		free_all_error("Error\nMap isnt closed :o\n", game);
+	return ;
 }
