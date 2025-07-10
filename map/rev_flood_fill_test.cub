@@ -1,0 +1,14 @@
+NO ./textures/kawaii/path_to_the_north_texture.xpm
+SO ./textures/kawaii/path_to_the_south_texture.xpm
+WE ./textures/kawaii/path_to_the_west_texture.xpm
+EA ./textures/kawaii/path_to_the_east_texture.xpm
+F 80,80,80
+C 180,180,240
+
+
+  1111111
+100001
+10001
+100011
+10010S1
+1111111

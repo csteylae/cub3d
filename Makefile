@@ -35,6 +35,8 @@ SRCS= ./src/main.c \
 	  ./src/input_parsing/parsing/map/map.c \
 	  ./src/input_parsing/parsing/map/map_2.c \
 	  ./src/input_parsing/parsing/map/map_3.c \
+	  ./src/input_parsing/parsing/map/map_boundary.c \
+	  ./src/input_parsing/parsing/map/construct_padded_map.c \
 
 OBJS=$(SRCS:.c=.o)
 

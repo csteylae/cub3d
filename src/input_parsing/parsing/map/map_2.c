@@ -114,8 +114,9 @@ void	map_is_valid(t_data *game)
 		free_all_error("Error\nInvalid file!\n", game);
 	check_map_empty_lines(game);
 	map_is_closed(game);
-	map_borders(game);
-	check_invalid_zero(game);
+	check_map_boundary(game);
+//	map_borders(game);
+//	check_invalid_zero(game);
 	if (game->map_copy)
 	{
 		free_str(game->map_copy);

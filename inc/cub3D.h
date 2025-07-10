@@ -132,5 +132,10 @@ void		check_invalid_zero(t_data *game);
 
 /*_____MAP_____*/
 void		map_is_valid(t_data *game);
+void		check_map_boundary(t_data *game);
+void		free_padded_map(char **map, int len);
+int			get_map_height(char **map);
+int			get_max_width(char **map);
+char		**create_padded_map(t_data *game);
 
 #endif
