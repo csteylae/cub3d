@@ -30,7 +30,7 @@ static int	map_content(char *line)
 		return (1);
 	while (line[i])
 	{
-		if (line[i] != ' ' && line[i] != '\t' && line[i] != '0'
+		if (line[i] != ' ' && line[i] != '0'
 			&& line[i] != '1' && line[i] != 'N' && line[i] != 'S'
 			&& line[i] != 'E' && line[i] != 'W' && line[i] != '\n')
 			return (0);
@@ -62,4 +62,12 @@ void	parse_map(t_data *game, int map_start_index)
 		j++;
 	}
 	game->map[j] = NULL;
+	int	k;
+	k = 0;
+	printf("MAP-> ");
+	while (game->map[k])
+	{
+		printf("%s\n", game->map[k]);
+		k++;
+	}
 }
