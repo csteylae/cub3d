@@ -1,8 +1,1 @@
-
-game->texture[]
-game->map
-game->floor_color et ceiling
-
-chloe doit recup txt et color donc a ne pas free
-chloe-> free texture a la fin
-renvoyer la map
+-> gérer txt path / et ./
