@@ -32,7 +32,7 @@ void	open_file(t_data *game, char *file)
 {
 	game->fd = open(file, O_RDONLY);
 	if (game->fd == -1)
-		ft_error("Error\nFile opening failure!\n");
+		free_all_error("Error\nFile opening failure!\n", game);
 }
 
 static char	**read_lines_2(t_data *game)
@@ -41,7 +41,7 @@ static char	**read_lines_2(t_data *game)
 	int		i;
 
 	if (!game->entire_fd)
-		ft_error("Error\nMalloc failed\n");
+		free_all_error("Error\nMalloc failed\n", game);
 	i = 0;
 	line = get_next_line(game->fd);
 	while (line != NULL)

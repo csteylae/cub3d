@@ -12,7 +12,7 @@
 
 #include "../../../../inc/cub3D.h"
 
-static void	check_surroundings(t_data *game, int y, int x)
+/*static void	check_surroundings(t_data *game, int y, int x)
 {
 	if (y > 0 && x < (int)ft_strlen(game->map_copy[y - 1])
 		&& (game->map_copy[y - 1][x] == ' '
@@ -75,7 +75,7 @@ void	map_borders(t_data *game)
 		}
 		y++;
 	}
-}
+}*/
 
 int	flood_fill(t_data *game, int y, int x)
 {

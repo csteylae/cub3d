@@ -127,8 +127,8 @@ int			create_trgb(int t, t_data *game);
 void		parse_map(t_data *game, int map_start_index);
 char		**copy_map(char **src_map, t_data *game);
 int			flood_fill(t_data *game, int y, int x);
-void		map_borders(t_data *game);
-void		check_invalid_zero(t_data *game);
+//void		map_borders(t_data *game);
+//void		check_invalid_zero(t_data *game);
 
 /*_____MAP_____*/
 void		map_is_valid(t_data *game);
