@@ -60,18 +60,6 @@ static void	copy_padded_map(char **padded_map, char **map)
 	}
 }
 
-void	print_padded_map(char **padded_map)
-{
-	int i;
-
-	i = 0;
-	while(padded_map[i])
-	{
-		printf("%s\n", padded_map[i]);
-		i++;
-	}
-}
-
 char **create_padded_map(t_data *game)
 {
 	char	**copy;
@@ -87,6 +75,5 @@ char **create_padded_map(t_data *game)
 	if (!copy)
 		free_all_error("Error\nCannot malloc map copy!\n", game);
 	copy_padded_map(copy, game->map);
-	print_padded_map(copy);
 	return (copy);
 }
