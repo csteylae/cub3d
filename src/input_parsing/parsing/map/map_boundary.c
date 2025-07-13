@@ -45,19 +45,6 @@ void	exterior_flood_fill(char **map, int x, int y, bool *is_valid)
 	exterior_flood_fill(map, x, y - 1, is_valid);
 }
 
-static void print_padded_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	printf("MAP COPY->\n");
-	while (map[i])
-	{
-		printf("%s\n", map[i]);
-		i++;
-	}
-}
-
 void	check_map_boundary(t_data *game)
 {
 	char	**copy;
@@ -65,7 +52,6 @@ void	check_map_boundary(t_data *game)
 
 	is_valid = true;
 	copy = create_padded_map(game);
-	print_padded_map(copy);
 	if (!copy)
 		free_all_error("Error\nCannot malloc map copy!\n", game);
 	exterior_flood_fill(copy, 0, 0, &is_valid);
