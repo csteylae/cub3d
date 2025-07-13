@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:56:34 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/08 22:09:01 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/13 15:22:27 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,6 @@ void	map_is_valid(t_data *game)
 	check_map_empty_lines(game);
 	map_is_closed(game);
 	check_map_boundary(game);
-//	map_borders(game);
-//	check_invalid_zero(game);
 	if (game->map_copy)
 	{
 		free_str(game->map_copy);

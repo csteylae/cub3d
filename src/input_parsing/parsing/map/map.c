@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:00:13 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 15:52:45 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/13 15:23:14 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	parse_map(t_data *game, int map_start_index)
 	game->map[j] = NULL;
 	int	k;
 	k = 0;
-	printf("MAP-> ");
+	printf("MAP->\n");
 	while (game->map[k])
 	{
 		printf("%s\n", game->map[k]);

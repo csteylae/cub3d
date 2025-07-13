@@ -50,6 +50,7 @@ static void print_padded_map(char **map)
 	int	i;
 
 	i = 0;
+	printf("MAP COPY->\n");
 	while (map[i])
 	{
 		printf("%s\n", map[i]);
