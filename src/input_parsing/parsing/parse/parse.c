@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:05:15 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 16:57:07 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/14 13:57:32 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static char	**read_lines(t_data *game, char *file)
 	}
 	close(game->fd);
 	if (count == 0)
-		free_all_error("Error\nInvalid file!", game);
+		free_all_error("Error\nInvalid file!\n", game);
 	open_file(game, file);
 	game->entire_fd = malloc(sizeof(char *) * (count + 1));
 	return (read_lines_2(game));
