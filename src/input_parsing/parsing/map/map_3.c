@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:57:20 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/14 14:32:01 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/14 14:39:43 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 static void	check_surroundings(t_data *game, int y, int x)
 {
-	if (y > 0 && x < (int)ft_strlen(game->map_copy[y -1]) && (game->map_copy[y - 1][x] == ' '))
+	if (y > 0 && x < (int)ft_strlen(game->map_copy[y -1])
+		&& (game->map_copy[y - 1][x] == ' '))
 		free_all_error("Error\nInvalid file!\n", game);
-	if (game->map_copy[y + 1] && x < (int)ft_strlen(game->map_copy[y + 1]) && (game->map_copy[y + 1][x] == ' '))
+	if (game->map_copy[y + 1] && x < (int)ft_strlen(game->map_copy[y + 1])
+		&& (game->map_copy[y + 1][x] == ' '))
 		free_all_error("Error\nInvalid file!\n", game);
 	if (x > 0 && (game->map_copy[y][x - 1] == ' '))
 		free_all_error("Error\nInvalid file!\n", game);
-	if (x + 1 < (int)ft_strlen(game->map_copy[y]) && (game->map_copy[y][x + 1] == ' '))
+	if (x + 1 < (int)ft_strlen(game->map_copy[y])
+		&& (game->map_copy[y][x + 1] == ' '))
 		free_all_error("Error\nInvalid file!\n", game);
 }
 
@@ -28,7 +31,7 @@ void	check_invalid_zero(t_data *game)
 {
 	int	y;
 	int	x;
-	
+
 	y = 0;
 	while (game->map_copy[y])
 	{
