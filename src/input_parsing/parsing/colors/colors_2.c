@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:53:02 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/09 18:16:58 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/14 14:53:57 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	validate_rgb_components(char *str, t_data *game, int i, int j)
 		if (!game->cleaned[i] || game->cleaned[i][0] == '\0')
 		{
 			free(str);
-			free_all_error("Error\nInvalid file5!\n", game);
+			free_all_error("Error\nInvalid file!\n", game);
 		}
 		j = -1;
 		while (game->cleaned[i][++j])
