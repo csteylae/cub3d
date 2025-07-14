@@ -6,7 +6,7 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:47:21 by csteylae          #+#    #+#             */
-/*   Updated: 2025/07/13 15:23:48 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/14 14:30:52 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ int			create_trgb(int t, t_data *game);
 void		parse_map(t_data *game, int map_start_index);
 char		**copy_map(char **src_map, t_data *game);
 int			flood_fill(t_data *game, int y, int x);
+void		check_invalid_zero(t_data *game);
 
 /*_____MAP_____*/
 void		map_is_valid(t_data *game);
