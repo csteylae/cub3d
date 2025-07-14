@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_boundary.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/14 13:30:03 by csteylae          #+#    #+#             */
+/*   Updated: 2025/07/14 13:30:27 by csteylae         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../../inc/cub3D.h"
 
 void	free_padded_map(char **padded_map, int len)
@@ -27,7 +39,7 @@ static bool	is_player(char c)
 
 void	exterior_flood_fill(char **map, int x, int y, bool *is_valid)
 {
-	if (y < 0 || x < 0  || x >= get_max_width(map) || y >= get_map_height(map))
+	if (y < 0 || x < 0 || x >= get_max_width(map) || y >= get_map_height(map))
 		return ;
 	if (*is_valid == false)
 		return ;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   construct_padded_map.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/14 13:28:31 by csteylae          #+#    #+#             */
+/*   Updated: 2025/07/14 13:29:31 by csteylae         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../../inc/cub3D.h"
 
 int	get_map_height(char **map)
@@ -5,7 +17,7 @@ int	get_map_height(char **map)
 	int	i;
 
 	i = 0;
-	while(map[i])
+	while (map[i])
 		i++;
 	return (i);
 }
@@ -60,7 +72,7 @@ static void	copy_padded_map(char **padded_map, char **map)
 	}
 }
 
-char **create_padded_map(t_data *game)
+char	**create_padded_map(t_data *game)
 {
 	char	**copy;
 	int		height;
@@ -68,7 +80,7 @@ char **create_padded_map(t_data *game)
 
 	height = get_map_height(game->map) + 2;
 	width = get_max_width(game->map);
-	copy = malloc(sizeof(char*) * (height + 2));
+	copy = malloc(sizeof(char *) * (height + 2));
 	if (!copy)
 		free_all_error("Error\nCannot malloc map copy!\n", game);
 	fill_with_padded_char(copy, height, width);

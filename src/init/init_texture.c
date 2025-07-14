@@ -6,7 +6,7 @@
 /*   By: csteylae <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:40:40 by csteylae          #+#    #+#             */
-/*   Updated: 2025/06/27 16:43:42 by csteylae         ###   ########.fr       */
+/*   Updated: 2025/07/14 13:28:06 by csteylae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	load_texture(t_mlx_data *data, t_texture *tex)
 	{
 		printf("Error\nCannot get image addr of: %s\n", tex->path);
 		close_cub(data);
-	 }
-
+	}
 }
 
 void	init_texture(t_mlx_data *data)
