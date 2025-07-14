@@ -54,6 +54,7 @@ static int	check_west(t_data *game, char *line)
 		if (!game->texture[2])
 			free_all_error("Error\nInvalid file!\n", game);
 		free(game->txt_path);
+		game->txt_path = NULL;
 		return (1);
 	}
 	return (0);
@@ -76,6 +77,7 @@ static int	check_south(t_data *game, char *line)
 		if (!game->texture[1])
 			free_all_error("Error\nInvalid file!\n", game);
 		free(game->txt_path);
+		game->txt_path = NULL;
 		return (1);
 	}
 	return (0);
@@ -98,6 +100,7 @@ static int	check_north(t_data *game, char *line)
 		if (!game->texture[0])
 			free_all_error("Error\nInvalid file3!\n", game);
 		free(game->txt_path);
+		game->txt_path = NULL;
 		return (1);
 	}
 	return (0);
