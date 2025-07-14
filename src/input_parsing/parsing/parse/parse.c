@@ -6,13 +6,13 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:05:15 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/14 13:57:32 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/14 15:09:55 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/cub3D.h"
 
-static void	parse_2(t_data *game)
+static void	search_textures(t_data *game)
 {
 	if (!game->trimmed)
 		free_all_error("Error\nInvalid file!\n", game);
@@ -91,7 +91,7 @@ void	parse(t_data *game, char *file)
 		if (game->cnt == expected)
 			break ;
 		game->trimmed = ft_strtrim(game->entire_fd[i], " \t");
-		parse_2(game);
+		search_textures(game);
 	}
 	map_start_index = i;
 	parse_map(game, map_start_index);

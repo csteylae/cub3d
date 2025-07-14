@@ -25,16 +25,16 @@ SRCS= ./src/main.c \
 	  ./lib/gnl/get_next_line.c \
 	  ./lib/gnl/get_next_line_utils.c \
 	  ./src/input_parsing/errors/error.c \
-	  ./src/input_parsing/errors/error_2.c \
+	  ./src/input_parsing/errors/free.c \
 	  ./src/input_parsing/init_struct.c \
 	  ./src/input_parsing/parsing/parse/parse.c \
 	  ./src/input_parsing/parsing/textures/textures.c \
-	  ./src/input_parsing/parsing/textures/textures_2.c \
+	  ./src/input_parsing/parsing/textures/txt_path.c \
 	  ./src/input_parsing/parsing/colors/colors.c \
-	  ./src/input_parsing/parsing/colors/colors_2.c \
+	  ./src/input_parsing/parsing/colors/validate_rgb.c \
 	  ./src/input_parsing/parsing/map/map.c \
-	  ./src/input_parsing/parsing/map/map_2.c \
-	  ./src/input_parsing/parsing/map/map_3.c \
+	  ./src/input_parsing/parsing/map/map_is_valid.c \
+	  ./src/input_parsing/parsing/map/copy_map.c \
 	  ./src/input_parsing/parsing/map/map_boundary.c \
 	  ./src/input_parsing/parsing/map/construct_padded_map.c \
 
