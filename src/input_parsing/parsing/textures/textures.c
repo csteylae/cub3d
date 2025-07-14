@@ -91,14 +91,14 @@ static int	check_north(t_data *game, char *line)
 			free_all_error("Error\nDuplicate element!\n", game);
 		game->cnt = game->cnt | NO;
 		if (game->texture[0] != NULL)
-			free_all_error("Error\nInvalid file1!\n", game);
+			free_all_error("Error\nInvalid file!\n", game);
 		game->txt_path = ft_strtrim(line + 3, " \n");
 		if (!game->txt_path || game->txt_path[0] == '\0')
-			free_all_error("Error\nInvalid file2!\n", game);
+			free_all_error("Error\nInvalid file!\n", game);
 		check_textures_path(game->txt_path, game);
 		game->texture[0] = ft_strdup(game->txt_path);
 		if (!game->texture[0])
-			free_all_error("Error\nInvalid file3!\n", game);
+			free_all_error("Error\nInvalid file!\n", game);
 		free(game->txt_path);
 		game->txt_path = NULL;
 		return (1);

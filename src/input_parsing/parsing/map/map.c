@@ -62,12 +62,4 @@ void	parse_map(t_data *game, int map_start_index)
 		j++;
 	}
 	game->map[j] = NULL;
-	int	k;
-	k = 0;
-	printf("MAP->\n");
-	while (game->map[k])
-	{
-		printf("%s\n", game->map[k]);
-		k++;
-	}
 }
