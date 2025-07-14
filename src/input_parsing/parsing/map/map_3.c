@@ -6,18 +6,49 @@
 /*   By: raneuman <raneuman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:57:20 by raneuman          #+#    #+#             */
-/*   Updated: 2025/07/13 15:18:13 by raneuman         ###   ########.fr       */
+/*   Updated: 2025/07/14 14:32:01 by raneuman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/cub3D.h"
+
+static void	check_surroundings(t_data *game, int y, int x)
+{
+	if (y > 0 && x < (int)ft_strlen(game->map_copy[y -1]) && (game->map_copy[y - 1][x] == ' '))
+		free_all_error("Error\nInvalid file!\n", game);
+	if (game->map_copy[y + 1] && x < (int)ft_strlen(game->map_copy[y + 1]) && (game->map_copy[y + 1][x] == ' '))
+		free_all_error("Error\nInvalid file!\n", game);
+	if (x > 0 && (game->map_copy[y][x - 1] == ' '))
+		free_all_error("Error\nInvalid file!\n", game);
+	if (x + 1 < (int)ft_strlen(game->map_copy[y]) && (game->map_copy[y][x + 1] == ' '))
+		free_all_error("Error\nInvalid file!\n", game);
+}
+
+void	check_invalid_zero(t_data *game)
+{
+	int	y;
+	int	x;
+	
+	y = 0;
+	while (game->map_copy[y])
+	{
+		x = 0;
+		while (game->map_copy[y][x])
+		{
+			if (game->map_copy[y][x] == '0')
+				check_surroundings(game, y, x);
+			x++;
+		}
+		y++;
+	}
+}
 
 int	flood_fill(t_data *game, int y, int x)
 {
 	if (y < 0 || x < 0 || !game->map_copy[y]
 		|| x >= (int)ft_strlen(game->map_copy[y]))
 		return (1);
-	if (game->map_copy[y][x] == ' ' || game->map_copy[y][x] == '\t')
+	if (game->map_copy[y][x] == ' ')
 		return (1);
 	if (game->map_copy[y][x] == '1' || game->map_copy[y][x] == 'X')
 		return (0);
